@@ -1,0 +1,610 @@
+:: StoryTitle
+Murder mystery
+
+
+:: StoryData
+{
+  "ifid": "0DD55805-6428-494C-9C8B-1B7096E9D118",
+  "format": "SugarCube",
+  "format-version": "2.37.0",
+  "start": "Start",
+  "tag-colors": {
+    "General": "blue",
+    "Story": "yellow",
+    "Clue": "purple"
+  },
+  "zoom": 1
+}
+
+
+:: Achievements [General] {"position":"800,200","size":"100,100"}
+Achievements
+
+
+:: Characters [General] {"position":"1000,200","size":"100,100"}
+<div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+  <h1>Characters</h1>
+  <h3>Click on a portrait to learn more about this character</h3>
+
+  <!-- Grid of portraits -->
+  <div style="display:grid; grid-template-columns:repeat(6, 1fr); gap:6px; width:100%; max-width:1200px; overflow:visible;">
+    
+    <a data-passage="ColonelWinZIP" class="char suspect" data-name="Colonel Win-ZIP" title="Colonel Win-ZIP">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png" alt="Colonel Win-ZIP">
+    </a>
+
+    <a data-passage="ClippordButler" class="char suspect" data-name="Clippord - The Butler" title="Clippord - The Butler">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png" alt="Clippord - The Butler">
+    </a>
+
+    <a data-passage="Detective" class="char detective" data-name="Detective (You)" title="Detective (You)">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+    </a>
+
+    <a data-passage="EweAn" class="char suspect" data-name="Ewe-an" title="Ewe-an">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Ewe-an.png" alt="Ewe-an">
+    </a>
+
+    <a data-passage="HUSCarWilde" class="char normal" data-name="HUS-car Wilde" title="HUS-car Wilde">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/HUS-car%20Wilde.png" alt="HUS-car Wilde">
+    </a>
+
+    <a data-passage="JaySonJnr" class="char suspect" data-name="Jay Son Jnr." title="Jay Son Jnr.">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Jay%20Son%20Jnr.png" alt="Jay Son Jnr.">
+    </a>
+
+    <a data-passage="LexiCon" class="char suspect" data-name="Dr. Lex Icon" title="Dr. Lex Icon">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Lexi%20Con.png" alt="Dr. Lex Icon">
+    </a>
+
+    <a data-passage="MerryLoopwell" class="char suspect" data-name="Merry Loopwell" title="Merry Loopwell">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Merry%20Loopwell.png" alt="Merry Loopwell">
+    </a>
+
+    <a data-passage="MPEGgy" class="char suspect" data-name="MPEG-gy" title="MPEG-gy">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/MPEG-gy.png" alt="MPEG-gy">
+    </a>
+
+    <a data-passage="SirRegex" class="char victim" data-name="Sir Regex Metadata IV" title="Sir Regex Metadata IV">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Sir%20Regex%20Metadata%20IV.png" alt="Sir Regex Metadata IV">
+    </a>
+
+    <a data-passage="TIFFani" class="char suspect" data-name="TIFFani" title="TIFFani">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png" alt="TIFFani">
+    </a>
+
+    <a data-passage="VicarVector" class="char suspect" data-name="Vicar Vector" title="Vicar Vector">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/vicar.png" alt="Vicar Vector">
+    </a>
+  </div>
+</div>
+
+<style>
+/* Card/link wrapper */
+.char {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Portrait */
+.char img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 4px solid transparent; /* base thickness */
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Roles (border colors) */
+.char.detective img { border-color: #ffffff; }
+.char.victim    img { border-color: #3b82f6; } /* blue */
+.char.normal    img { border-color: #22c55e; } /* green */
+.char.suspect   img { border-color: #ef4444; } /* red */
+
+/* Hover: slight zoom + color glow */
+.char:hover img {
+  transform: scale(1.04);
+}
+
+/* Per-role glow (soft, matching border) */
+.char.detective:hover img { 
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.7),
+    0 0 12px rgba(255,255,255,0.7),
+    0 0 20px rgba(255,255,255,0.5);
+}
+.char.victim:hover img {
+  box-shadow:
+    0 0 0 2px rgba(59,130,246,0.6),
+    0 0 12px rgba(59,130,246,0.6),
+    0 0 20px rgba(59,130,246,0.45);
+}
+.char.normal:hover img {
+  box-shadow:
+    0 0 0 2px rgba(34,197,94,0.6),
+    0 0 12px rgba(34,197,94,0.6),
+    0 0 20px rgba(34,197,94,0.45);
+}
+.char.suspect:hover img {
+  box-shadow:
+    0 0 0 2px rgba(239,68,68,0.6),
+    0 0 12px rgba(239,68,68,0.6),
+    0 0 20px rgba(239,68,68,0.45);
+}
+
+/* Tooltip */
+.char::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  white-space: nowrap;
+}
+.char:hover::after { opacity: 1; }
+</style>
+
+
+:: ClippordButler [General] {"position":"1200,100","size":"100,100"}
+
+
+
+:: Clues [General] {"position":"900,200","size":"100,100"}
+
+
+
+:: ColonelWinZIP [General] {"position":"1200,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png" alt="Colonel Win-ZIP">
+  </div>
+  <div class="char-text">
+    <h2>Colonel Win-ZIP</h2>
+    <p>
+      Retired officer, tightly buttoned, and often says very short clipped words. Almost bulging out of his suit. His body looks strangely compressed and not quite in proportion. He has a lot of bulging suitcases held together by chains., but he does not have very much stuff. He claims to have fit his entire military memoirs into a single envelope and is agrophobic insiting that wide open spaces scare him. There is a rumour that once he sneezed and seven tiny identical Colonels spilled out before collapsing back into him. At night, villagers say they hear him… decompressing.
+    </p>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Detective [General] {"position":"1200,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+  </div>
+  <div class="char-text">
+    <h2>Detective (You)</h2>
+    <p>
+      You are the detective, tasked with solving the strange events in the manor. 
+      Keen observation and quick thinking will be your greatest allies.
+    </p>
+    <p>
+      Click through the manor’s rooms and interrogate the suspects to uncover the truth.
+    </p>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Enter the house [Story] {"position":"325,475","size":"100,100"}
+Upon arriving at Metadata Manor you are welcomed by Clippy the Butler in the foyer. The butler looks very upset. 
+
+"Welcome, welcome, you must be $player_name!! Sir Regex and I were expecting you, but not under these gloomy circumstances."
+
+Clippy explains that Sir Regex was found dead in the study that afternoon. The body has been removed by authorities for examination, but because of the heavy snow there is no longer any access to the little village of Checksum-On-The Wold and they can’t possibly get to you until the roads have cleared. 
+
+You, a life long Agatha Christie fan, are stuck in the village for three days with no escape, and with a murderer close by your side.
+
+You decided to help the butler and try to figure out what has happened.
+
+[[Talk to Clippy]]
+
+
+:: EweAn [General] {"position":"1300,0","size":"100,100"}
+
+
+
+:: Explore The Study [Clue] {"position":"50,750","size":"100,100"}
+Clue 2
+
+
+:: Explore the Graphics Room [Clue] {"position":"200,750","size":"100,100"}
+
+
+
+:: Explore the Library [Clue] {"position":"350,750","size":"100,100"}
+
+
+
+:: Go to sleep [Story] {"position":"50,625","size":"100,100"}
+Day 1
+
+text 
+
+[[Explore The Study]] [[Explore the Graphics Room]] [[Explore the Library]]
+
+
+:: Go to your room [Story] {"position":"750,475","size":"100,100"}
+text 
+
+[[Go to sleep]]
+
+
+:: HUSCarWilde [General] {"position":"1300,100","size":"100,100"}
+
+
+
+:: Introducing {"position":"125,200","size":"100,100"}
+<<script>>
+$("body").addClass("start-screen");
+<</script>>
+
+Please enter your name below.
+
+    <<textbox "$player_name" "Your name" "Greetings">>
+    
+  [[Start the game]]
+
+
+:: JaySonJnr [General] {"position":"1300,200","size":"100,100"}
+
+
+
+:: LexiCon [General] {"position":"1400,0","size":"100,100"}
+
+
+
+:: Look at the map [Story] {"position":"625,475","size":"100,100"}
+map
+
+[[Go to your room]]
+
+
+:: MPEGgy [General] {"position":"1400,200","size":"100,100"}
+
+
+
+:: Make way to the village [Story] {"position":"325,350","size":"100,100"}
+Night started falling and as you head to Sir Regex’s house Metadata Manor you see that the snow has started to set in and begin to drive faster. The roads to the country village and large mansion are windy and you don’t want to get snowed in.
+
+When you pass the gates, you glance upon a dark figure in the garden. Suddenly, you get an uneasy feeling and you start to wonder if you should have come here.
+
+You try to fight your nerves and park the car. 
+
+[[Enter the house]]
+
+
+:: MerryLoopwell [General] {"position":"1400,100","size":"100,100"}
+
+
+
+:: Reread the letter [Clue] {"position":"175,350","size":"100,100"}
+Clue 1 
+
+[[Make way to the village]]
+
+
+:: SirRegex [General] {"position":"1500,0","size":"100,100"}
+
+
+
+:: Start {"position":"175,50","size":"100,100"}
+<<script>>
+$("body").addClass("start-screen");
+<</script>>
+
+!Murdered in Plain Text
+!!!!<blockquote><em>The ASCII was clear, but the motive wasn't</em></blockquote>
+
+<div class="start-menu">
+  <button class="button" data-passage="Introducing">Start</button>
+  <button class="button" data-passage="Clues">Clues</button>
+  <button class="button" data-passage="Characters">Characters</button>
+  <button class="button" data-passage="Achievements">Achievements</button>
+</div>
+
+
+:: Start the game [Story] {"position":"325,225","size":"100,100"}
+Hello $playername,
+
+You have been called to the tiny village of Checksum-On-The-Wold by your old friend, Sir Regex Metadata, finest stickler of standards. He has found an issue with his copy of the OAIS model and has written you an urgent letter in Comic Sans font to come and help. He seems desperate. There is something odd about that letter.
+
+You decide to postpone your trip no longer. If you leave now, you can make it before nightfall. 
+
+[[Reread the letter]] [[Make way to the village]] 
+
+
+:: TIFFani [General] {"position":"1500,100","size":"100,100"}
+
+
+
+:: Talk to Clippy [Story] {"position":"475,475","size":"100,100"}
+"The detective gave me some tips to look for clues. Here's a map of the house, have a look at it and let's get you settled after that. We meet in the Skull-ery first thing tomorrow and start our investigation from there.
+
+[[Look at the map]]
+
+
+:: VicarVector [General] {"position":"1500,200","size":"100,100"}
+
+
+
+:: StoryScript [script]
+// Add class on passage start so CSS can target the Start screen
+$(document).on(':passagestart', function (ev) {
+  if (ev.passage.title === "Start") {
+    $('body').addClass('start-screen');
+  } else {
+    $('body').removeClass('start-screen');
+  }
+});
+
+// Suspect Bios
+$(document).on("click", ".suspect-button", function() {
+    // Hide all bios first
+    $(".suspect-bio").hide();
+    // Show the one linked to this button
+    const target = $(this).data("target");
+    $("#" + target).slideDown(300);
+});
+
+// Accordion
+$(document).on("click", ".accordion", function () {
+  $(this).toggleClass("active");
+  const panel = $(this).next(".panel");
+  panel.slideToggle();
+});
+
+:: StoryStylesheet [stylesheet]
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Libre+Baskerville&display=swap');
+
+.start-menu {
+  display: flex;
+  justify-content: center; /* center the buttons horizontally */
+  gap: 0.5em; /* space between buttons */
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  margin-top: 2em;
+}
+
+/* Base page styling */
+body {
+  background-color: #1C1B1A;
+  color: #EDEAE5;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 150%;
+}
+ 
+/* hide ui-bar and change margin, center text */
+#ui-bar {
+  display: none;
+}
+ 
+#story {
+  margin-left: 0;
+}
+ 
+#passages {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+ 
+.passage {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+ 
+/* Global headings */
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  color: #fffff0 ;
+  text-align: center;
+}
+ 
+/* Button styling */
+/* Button styling */
+.button {
+  padding: 0.8em 1.2em;
+  background-color: #1C1B1A;
+  color: #C89F65;
+  border: 2px solid #C89F65;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button:hover {
+  background-color: #c69d63;
+  color: #EDEAE5;
+  border: 2px solid #C89F65;
+}
+
+.button:active {
+  background-color: #C89F65;
+  color: #1C1B1A;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* border */
+.silent-movie-frame {
+  position: relative;
+  background-color: #1C1B1A;
+  color: #fffff0;
+  padding: 30px;
+  border: 10px solid white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+ 
+.corner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+  pointer-events: none;
+}
+ 
+.corner.tl {
+  top: -10px;
+  left: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/TopLeft.png");
+}
+.corner.tr {
+  top: -10px;
+  right: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/TopRight.png");
+  transform: scaleX(-1);
+}
+.corner.bl {
+  bottom: -10px;
+  left: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/BottomLeft.png");
+  transform: scaleY(-1);
+}
+.corner.br {
+  bottom: -10px;
+  right: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/BottomRight.png");
+  transform: scale(-1, -1);
+}
+ 
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Suspect buttons container */
+.suspect-menu {
+  display: flex;
+  justify-content: center; /* center buttons */
+  gap: 0.5em;
+  flex-wrap: wrap; /* wrap on small screens */
+  margin-bottom: 1em;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #1C1B1A;
+  color: #C89F65;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+  margin-bottom: 5px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #C89F65;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 12px;
+  background-color: #c69d63;
+  max-height: 0;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
