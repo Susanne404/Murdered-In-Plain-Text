@@ -1,0 +1,1657 @@
+:: StoryTitle
+Murder mystery
+
+
+:: StoryData
+{
+  "ifid": "0DD55805-6428-494C-9C8B-1B7096E9D118",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Start",
+  "tag-colors": {
+    "General": "blue",
+    "Story": "yellow",
+    "Clue": "purple"
+  },
+  "zoom": 1
+}
+
+
+:: Achievements [General] {"position":"1000,0","size":"100,100"}
+Achievements
+
+
+:: Characters [General] {"position":"1000,200","size":"100,100"}
+<div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+  <h1>Characters</h1>
+  <h3>Click on a portrait to learn more about this character</h3>
+
+  <!-- Grid of portraits -->
+  <div style="display:grid; grid-template-columns:repeat(6, 1fr); gap:6px; width:100%; max-width:1200px; overflow:visible;">
+    
+    <a data-passage="ColonelWinZIP" class="char suspect" data-name="Colonel Win-ZIP" title="Colonel Win-ZIP">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png" alt="Colonel Win-ZIP">
+    </a>
+
+    <a data-passage="ClippordButler" class="char suspect" data-name="Clippord - The Butler" title="Clippord - The Butler">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png" alt="Clippord - The Butler">
+    </a>
+
+    <a data-passage="Detective" class="char detective" data-name="Detective (You)" title="Detective (You)">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+    </a>
+
+    <a data-passage="EweAn" class="char suspect" data-name="Ewe-an" title="Ewe-an">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Ewe-an.png" alt="Ewe-an">
+    </a>
+
+    <a data-passage="HUSCarWilde" class="char normal" data-name="HUScar Wilde" title="HUScar Wilde">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/HUS-car%20Wilde.png" alt="HUScar Wilde">
+    </a>
+
+    <a data-passage="JaySonJnr" class="char suspect" data-name="Jay Son Jnr." title="Jay Son Jnr.">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Jay%20Son%20Jnr.png" alt="Jay Son Jnr.">
+    </a>
+
+    <a data-passage="LexyCon" class="char suspect" data-name="Dr. Lexy Con" title="Dr. Lexy Con">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Lexi%20Con.png" alt="Dr. Lexy Con">
+    </a>
+
+    <a data-passage="MerryLoopwell" class="char suspect" data-name="Merry Loopwell" title="Merry Loopwell">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Merry%20Loopwell.png" alt="Merry Loopwell">
+    </a>
+
+    <a data-passage="MPEGgy" class="char suspect" data-name="MPEG-gy" title="MPEG-gy">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/MPEG-gy.png" alt="MPEG-gy">
+    </a>
+
+    <a data-passage="SirRegex" class="char victim" data-name="Sir Regex Metadata IV" title="Sir Regex Metadata IV">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Sir%20Regex%20Metadata%20IV.png" alt="Sir Regex Metadata IV">
+    </a>
+
+    <a data-passage="TIFFani" class="char suspect" data-name="TIFFani" title="TIFFani">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png" alt="TIFFani">
+    </a>
+
+    <a data-passage="VicarVector" class="char suspect" data-name="Vicar Vector" title="Vicar Vector">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/vicar.png" alt="Vicar Vector">
+    </a>
+  </div>
+</div>
+
+<style>
+/* Card/link wrapper */
+.char {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Portrait */
+.char img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 4px solid transparent; /* base thickness */
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Roles (border colors) */
+.char.detective img { border-color: #ffffff; }
+.char.victim    img { border-color: #3b82f6; } /* blue */
+.char.normal    img { border-color: #22c55e; } /* green */
+.char.suspect   img { border-color: #ef4444; } /* red */
+
+/* Hover: slight zoom + color glow */
+.char:hover img {
+  transform: scale(1.04);
+}
+
+/* Per-role glow (soft, matching border) */
+.char.detective:hover img { 
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.7),
+    0 0 12px rgba(255,255,255,0.7),
+    0 0 20px rgba(255,255,255,0.5);
+}
+.char.victim:hover img {
+  box-shadow:
+    0 0 0 2px rgba(59,130,246,0.6),
+    0 0 12px rgba(59,130,246,0.6),
+    0 0 20px rgba(59,130,246,0.45);
+}
+.char.normal:hover img {
+  box-shadow:
+    0 0 0 2px rgba(34,197,94,0.6),
+    0 0 12px rgba(34,197,94,0.6),
+    0 0 20px rgba(34,197,94,0.45);
+}
+.char.suspect:hover img {
+  box-shadow:
+    0 0 0 2px rgba(239,68,68,0.6),
+    0 0 12px rgba(239,68,68,0.6),
+    0 0 20px rgba(239,68,68,0.45);
+}
+
+/* Tooltip */
+.char::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  white-space: nowrap;
+}
+.char:hover::after { opacity: 1; }
+</style>
+
+
+:: ClippordButler [General] {"position":"1200,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png" alt="Clippord - The Butler">
+  </div>
+  <div class="char-text">
+    <h2>Clippord - The Butler</h2>
+    <p><b>Occupation:</b> Butler of Metadata Manor</p>
+    <p><b>Favourite Location:</b> The grand hall, hovering politely in the corner</p>
+    <p><b>Quote:</b> "Need help picking the perfect murder weapon? I am here to assist you"</p>
+    <p><b>Hobby:</b> Polishing the floppy disk tray</p>
+    <p><b>Village Reputation:</b> Helpful… until he isn’t</p>
+    <p><b>Pet Peeve:</b> All messes</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Clues [General] {"position":"1000,100","size":"100,100"}
+
+
+
+:: ColonelWinZIP [General] {"position":"1200,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png" alt="Colonel Win-ZIP">
+  </div>
+  <div class="char-text">
+    <h2>Colonel Win-ZIP</h2>
+    <p><b>Occupation:</b> Retired military man, obsessed with effiency</p>
+    <p><b>Favourite Location:</b> The .PUB, where he lectures on “properly compressed banter”</p>
+    <p><b>Quote:</b> “Tighten it up!”</p>
+    <p><b>Hobby:</b> Folding maps until they’re the size of postage stamps</p>
+    <p><b>Village Reputation:</b> Grumpy but respected</p>
+    <p><b>Pet Peeve:</b> Unnecessary expansion</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Continue with your day {"position":"900,500","size":"100,100"}
+Well that was nice. You can't help get the niggling feeling that you have narrowly missed out on some sort of harrowing adventure but oh well. There are emails to reply to, a book launch to attend, and that metadata isn't just going to write itself now is it.
+
+You settle back into the tedium of everyday life with a contendedly safe yawn.
+  <div class="start-menu">
+  <button class="button" data-passage="End credits">End credits</button>
+</div>
+
+
+
+:: Detective [General] {"position":"1200,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+  </div>
+  <div class="char-text">
+    <h2>Detective (You)</h2>
+    <p><b>Occupation:</b> Consultant in digital preservation & amateur sleuth</p>
+    <p><b>Favourite Location:</b> Metadata Manor’s dusty archives</p>
+    <p><b>Quote:</b> “This could be important evidence.”</p>
+    <p><b>Hobby:</b> Listening to true-crime podcasts at double speed</p>
+    <p><b>Village Reputation:</b> A bit mysterious, but welcomed - for now</p>
+    <p><b>Pet Peeve:</b> Sticky notes with no metadata</p>
+    <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: End credits {"position":"1700,100","size":"100,100"}
+
+
+
+:: Enter the house [Story] {"position":"200,675","size":"100,100"}
+Upon arriving at Metadata Manor you are welcomed by Clippy the Butler in the foyer. The butler looks very upset. 
+
+"Welcome, welcome, you must be $player_name!! Sir Regex and I were expecting you, but not under these gloomy circumstances."
+
+Clippy explains that Sir Regex was found dead in the study that afternoon. The body has been removed by authorities for examination, but because of the heavy snow there is no longer any access to the little village of Checksum-On-The Wold and they can’t possibly get to you until the roads have cleared. 
+
+You, a life long Agatha Christie fan, are stuck in the village for three days with no escape, and with a murderer close by your side.
+
+You decided to help the butler and try to figure out what has happened.
+  <div class="start-menu">
+  <button class="button" data-passage="Talk to Clippy">Talk to Clippy</button>
+</div>
+
+
+:: EweAn [General] {"position":"1300,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Ewe-an.png" alt="Ewe-an">
+  </div>
+  <div class="char-text">
+    <h2>Ewe-an</h2>
+    <p><b>Occupation:</b> Keeper of the village RAMs</p>
+    <p><b>Favourite Location:</b> An open field</p>
+    <p><b>Quote:</b> “They all wander off eventually.”</p>
+    <p><b>Hobby:</b> Knitting scarves with binary patterns.</p>
+    <p><b>Village Reputation:</b> Gentle, but a bit absent-minded</p>
+    <p><b>Pet Peeve:</b> Stray colons in his log files</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Explore The Study [Clue] {"position":"775,900","size":"100,100"}
+You find yourself in a Victorian style study.
+Luckily it has been tidied a bit, after the unfortunate event. 
+
+There is a letter on the desk. And what is that over there, between the books, you wonder. Go see if there is anything to explore in this room.
+<div style="position: relative; display: inline-block;">
+	<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/The_Study.png" alt="The study" width="800">
+    
+Done exploring this room?
+  <div class="start-menu">
+  <button class="button" data-passage="Explore the Graphics Room">Explore the Graphics Room</button>
+    <button class="button" data-passage="Explore the Library">Explore the Library</button>
+</div>
+
+	<!-- Invisible hotspot linking to Letter on desk -->
+	<a data-passage="Letter on desk"
+	   style="position: absolute;
+	          left: 250px;
+	          top: 350px;
+	          width: 120px;
+	          height: 80px;
+	          display: block;">
+	</a>
+    
+    <!-- Invisible hotspot linking to XML family tree -->
+	<a data-passage="XML family tree"
+	   style="position: absolute;
+	          left: 550px;
+	          top: 50px;
+	          width: 120px;
+	          height: 80px;
+	          display: block;">
+	</a>
+
+
+:: Explore the Graphics Room [Clue] {"position":"875,800","size":"100,100"}
+All the suspects are here. 
+
+Who is who again?
+  <div class="start-menu">
+  <button class="button" data-passage="Characters">Have a look at the characters</button>
+</div>
+
+
+:: Explore the Library [Clue] {"position":"775,800","size":"100,100"}
+
+
+
+:: Explore the Skull-ery {"position":"875,900","size":"100,100"}
+
+
+
+:: Fan Mail Letter #1 {"position":"1200,400","size":"100,100"}
+<div class="letter-style">
+Holmes of Hard Drives 🔍💾,
+
+I can’t believe you caught the Bit-Rot Bandit 😱🦹‍♂️! My floppy disks feel safe again 💿💚. Please sign my RAID array 🙌🖊️🖥️.
+
+— Starstruck Sysadmin 🤩🖥️
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+
+:: Fan Mail Letter #2 {"position":"1300,400","size":"100,100"}
+<div class="letter-style">
+Dear Legendary Archivist 🏆📂,
+
+Since you solved the Phantom File Format case 👻🗂️, I’ve been telling strangers at bus stops about you 🚌📢. They seem concerned 😅🤷‍♀️.
+
+— Enthusiastic but Socially Awkward 🤪💌
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+
+:: Fan Mail Letter #3 {"position":"1400,400","size":"100,100"}
+<div class="letter-style">
+O Wise One of the Checksum 🧙‍♂️🧮,
+
+You made the Missing Metadata mystery look easy 😎🔍. My cat 🐈 and I both cried 😭💾. Please never retire 🙏🕰️.
+
+— Crying But Backed Up 💦💽
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+
+:: Fan Mail Letter #4 {"position":"1200,500","size":"100,100"}
+<div class="letter-style">
+Great Digital Sleuth 🌟💾🕵️‍♂️,
+
+When you stopped the Cold Storage Conspiracy 🥶🗂️🤫, you saved not just files but dreams 🌈💤. I still have chills (and checksums) ❄️✅.
+
+— Eternally Archived 🙌💜
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+
+:: Fan Mail Letter #5 {"position":"1300,500","size":"100,100"}
+<div class="letter-style">
+My Dearest Detective 💖🔍,
+
+Because of you, my family photos are now in three geographically dispersed backups 🌍📸💾💾💾. I named my baby after you 👶✨.
+
+— Sincerely, Redundant Parent 🍼🥰
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+
+:: Fan Mail Letter #6 {"position":"1400,500","size":"100,100"}
+<div class="letter-style">
+Dear Hero 🦸‍♂️🔐,
+
+I was locked out of my email for six years 📧⏳. You cracked the Forgotten Password Vault 🗝️💻. You’re basically Gandalf with a YubiKey 🧙‍♂️🔑⚡.
+
+— Amazed and Logged In 😭🎉
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+
+:: Fold up the letter {"position":"200,425","size":"100,100"}
+You jump in the car and start driving despite the frosty roads you know that it is imperative that you get to Checksum-on-the-Wold in time.
+  <div class="start-menu">
+  <button class="button" data-passage="Make way to the village">Make way to the village</button>
+</div>
+
+
+:: Get on with doing things {"position":"500,150","size":"100,100"}
+It has been a long day. With a sigh you sit back at your desk and stare into your relaxing snoozy chamomile tea.
+
+But is that a thump you hear in the hallway....
+
+What do you do?
+  <div class="start-menu">
+  <button class="button" data-passage="Go and investigate">Go and investigate</button>
+  <button class="button" data-passage="Head to bed, the chamomile tea has really kicked in">Head to bed, the chamomile tea has really kicked in</button>
+</div>
+
+
+:: Go and investigate {"position":"425,275","size":"100,100"}
+As you nervously look round the corner from where you heard the thump noise you see as normal your doormat
+
+<div class="doormat-style">
+Welcome
+But Migrate Your Shoes First
+</div>
+BUT
+
+on it is a letter stamped with today's date and $player_name on the front.
+<div class="letter-style">
+Extremely urgent!
+No it really is... Seriously I am not joking
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Read the letter">Read the letter</button>
+</div>
+
+
+:: Go to sleep [Story] {"position":"825,675","size":"100,100"}
+!Day 1
+text 
+
+<div style="position: relative; display: inline-block;">
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Manor%20map%20day%201%20and%202.png" alt="Map" width="800">
+
+    <!-- Invisible hotspot linking to library -->
+	<a data-passage="Explore the Library"
+	   style="position: absolute; 
+	          left: 15px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+        <!-- Invisible hotspot linking to Skull-ery -->
+	<a data-passage="Explore The Skull-ery"
+	   style="position: absolute; 
+	          left: 210px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+            <!-- Invisible hotspot linking to Graphics Room -->
+	<a data-passage="Explore the Graphics Room"
+	   style="position: absolute; 
+	          left: 405px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Study -->
+	<a data-passage="Explore the Study"
+	   style="position: absolute; 
+	          left: 600px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+</div>
+
+
+:: Go to your room [Story] {"position":"575,675","size":"100,100"}
+text 
+  <div class="start-menu">
+  <button class="button" data-passage="Sleep">Count some RAMs</button>
+</div>
+
+
+:: HUSCarWilde [General] {"position":"1300,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/HUS-car%20Wilde.png" alt="HUScar Wilde">
+  </div>
+  <div class="char-text">
+    <h2>HUScar Wilde</h2>
+    <p><b>Occupation:</b> Hedge-cutter, or so they say</p>
+    <p><b>Favourite Location:</b> The Manor gardens, where the hedges whisper in patterns</p>
+    <p><b>Quote:</b> Rarely speaks - when he does, it sounds like static</p>
+    <p><b>Hobby:</b> Cutting hedges into ASCII art</p>
+    <p><b>Village Reputation:</b> Best not spoken of</p>
+    <p><b>Pet Peeve:</b> Overgrown shrubs</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Head to bed, the chamomile tea has really kicked in {"position":"575,275","size":"100,100"}
+You have a strange dream, or maybe a premonition that someone wanted your help but you can't quite fathom who....
+
+In your dream there is demonic laughter, brightly coloured village shops and a strange figure cutting hedges into QR codes.
+
+You wake with a start to see a leaf on the ground, but you are pretty sure there are no plants in your house.
+
+Do you...
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Try and get back to sleep</button>
+  <button class="button" data-passage="Go and investigate">Go and investigate</button>
+</div>
+
+
+:: Introducing {"position":"225,25","size":"100,100"}
+<<script>>
+$("body").addClass("start-screen");
+<</script>>
+
+Please enter your name below.
+
+    <<textbox "$player_name" "Your name" "Greetings">>
+  
+  <div class="start-menu">
+  <button class="button" data-passage="Start the game">Nice to meet you! </button>
+</div>
+
+
+:: JaySonJnr [General] {"position":"1300,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Jay%20Son%20Jnr.png" alt="Jay Son Jnr.">
+  </div>
+  <div class="char-text">
+    <h2>Jay Son Jnr.</h2>
+    <p><b>Occupation:</b> </p>
+    <p><b>Favourite Location:</b> Behind the bar, furiously rearranging bottles</p>
+    <p><b>Quote:</b> “You’ll need to nest that order properly.”</p>
+    <p><b>Hobby:</b> Rearranging drink menus into JSON trees</p>
+    <p><b>Village Reputation:</b> Charismatic but unstable</p>
+    <p><b>Pet Peeve:</b> Missing brackets</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Letter on desk {"position":"500,800","size":"100,100"}
+<div class="comic-sans-letter">
+To whom it may concern,
+
+Always keep in mind that not everything <i><u>appears</u></i> as what it looks like. 
+
+Yours sincerely,
+
+Sir Regex Metadata IV
+
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Explore The Study">Explore the study further</button>
+</div>
+
+
+
+:: LexyCon [General] {"position":"1400,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Lexi%20Con.png" alt="Dr. Lexy Con">
+  </div>
+  <div class="char-text">
+    <h2>Dr. Lexy Con</h2>
+    <p><b>Occupation:</b> Scholar in the Manor library</p>
+    <p><b>Favourite Location:</b> A shadowy library corner, where pages whisper</p>
+    <p><b>Quote:</b> “Shhh… Garamond is speaking."</p>
+    <p><b>Hobby:</b> Stitching letters into strange ligatures.</p>
+    <p><b>Village Reputation:</b> Eccentric and unsettling</p>
+    <p><b>Pet Peeve:</b> Not embedded fonts</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Look at the map [Story] {"position":"450,675","size":"100,100"}
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Manor%20map%20day%201%20and%202.png" alt="Map" width="800">
+  <div class="start-menu">
+  <button class="button" data-passage="Go to your room">Go to your room</button>
+</div>
+
+
+:: MPEGgy [General] {"position":"1400,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/MPEG-gy.png" alt="MPEG-gy">
+  </div>
+  <div class="char-text">
+    <h2>MPEG-gy</h2>
+    <p><b>Occupation:</b> Runs the Plaintext Post Office</p>
+    <p><b>Favourite Location:</b> The Post Office counter, humming while she sorts</p>
+    <p><b>Quote:</b> “Oh, I heard about that…”</p>
+    <p><b>Hobby:</b> Singing gossip as if it were hymnals</p>
+    <p><b>Village Reputation:</b> Cheerful but cutting</p>
+    <p><b>Pet Peeve:</b> Letters without stamps</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Make way to the village [Story] {"position":"200,550","size":"100,100"}
+Night started falling and as you head to Sir Regex’s house Metadata Manor you see that the snow has started to set in and begin to drive faster. The roads to the country village and large mansion are windy and you don’t want to get snowed in.
+
+When you pass the gates, you glance upon a dark figure in the garden. Suddenly, you get an uneasy feeling and you start to wonder if you should have come here.
+
+You try to fight your nerves and park the car. 
+  <div class="start-menu">
+  <button class="button" data-passage="Enter the house">Enter the house</button>
+</div>
+
+
+:: MerryLoopwell [General] {"position":"1400,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Merry%20Loopwell.png" alt="Merry Loopwell">
+  </div>
+  <div class="char-text">
+    <h2>Merry Loopwell</h2>
+    <p><b>Occupation:</b> Owner of The Charming GIF Shop</p>
+    <p><b>Favourite Location:</b> The stock room</p>
+    <p><b>Quote:</b> “And again, and again, and again…”</p>
+    <p><b>Hobby:</b> Collecting perpetual-motion toys</p>
+    <p><b>Village Reputation:</b> Sweet, predictable, sometimes eerie</p>
+    <p><b>Pet Peeve:</b> Things that don’t loop smoothly</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Profile {"position":"800,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+  </div>
+  <div class="char-text">
+    <h2>Detective (You)</h2>
+    <p><b>Occupation:</b> Consultant in digital preservation & amateur sleuth</p>
+    <p><b>Favourite Location:</b> Metadata Manor’s dusty archives</p>
+    <p><b>Quote:</b> “This could be important evidence.”</p>
+    <p><b>Hobby:</b> Listening to true-crime podcasts at double speed</p>
+    <p><b>Village Reputation:</b> A bit mysterious, but welcomed - for now</p>
+    <p><b>Pet Peeve:</b> Sticky notes with no metadata</p>
+    <div class="start-menu">
+    <button class="button" data-passage="Get on with doing things">Get on with doing things</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Read the letter {"position":"200,300","size":"100,100"}
+<div class="letter-style">
+Dear $player_name,
+
+Before you read this I may well be gone. Troublesome.</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Fold up the letter">Fold up the letter</button>
+</div>
+
+
+
+:: Sip at your cup of soothing camomile tea {"position":"1225,850","size":"100,100"}
+
+
+
+:: SirRegex [General] {"position":"1500,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Sir%20Regex%20Metadata%20IV.png" alt="Sir Regex Metadata IV">
+  </div>
+  <div class="char-text">
+    <h2>Sir Regex Metadata IV</h2>
+    <p><b>Occupation:</b> Retired patriarch of Metadata Manor</p>
+    <p><b>Favourite Location:</b> His study at Metadata Manor, filled with dusty type specimens</p>
+    <p><b>Quote:</b> “That’s not valid syntax.”</p>
+    <p><b>Hobby:</b> Cataloguing every serif he ever met</p>
+    <p><b>Village Reputation:</b> Pedantic but respectable</p>
+    <p><b>Pet Peeve:</b> People who use Comic Sans unironically</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Sit back with a sigh at a job well done {"position":"1100,850","size":"100,100"}
+Sitting back with a sigh you hear the soft thud of a letter landing on the floor of your hallway. Your curiosity is peaked! Or is it...
+
+Do you,
+
+[[Sip at your cup of soothing camomile tea]]
+
+or
+
+[[Pad in
+
+
+:: Sleep [Story] {"position":"700,675","size":"100,100"}
+One TIFF drifts into a dark archive bed,
+Two WAVs curl up where the fixity’s fed.
+Three PDFs nestle in trusted repose,
+Four checksums hum where the cool server glows.
+
+Five floppy ghosts find their emulated keep,
+Six XML records lie quiet, asleep.
+Seven WARC files dream of the web they once knew,
+Eight backups rest sound, in redundant tiers too.
+
+Nine formats preserved, all their futures assured,
+Ten files kept safe - their long lives secured.
+
+Rest now, archivist, your watch is complete,
+The files will endure while you drift into sleep.
+
+  <div class="start-menu">
+  <button class="button" data-passage="Go to sleep">Start the day well-rested</button>
+</div>
+
+
+:: Start {"position":"100,25","size":"100,100"}
+<<script>>
+$("body").addClass("start-screen");
+<</script>>
+
+!Murdered in Plain Text
+!!!!<blockquote><em>The ASCII was clear, but the motive wasn't</em></blockquote>
+
+<div class="start-menu">
+  <button class="button" data-passage="Introducing">Start</button>
+  <button class="button" data-passage="Clues">Clues</button>
+  <button class="button" data-passage="Characters">Characters</button>
+  <button class="button" data-passage="Achievements">Achievements</button>
+</div>
+
+
+
+:: Start the game [Story] {"position":"350,25","size":"100,100"}
+Welcome $player_name!
+
+We are so honoured that you, the famous sleuth has joined us today! 
+
+We have heard all about you in such newspapers such as 'The Daily E-Mail', 'The Checksum Chronicle' and the 'Persistent Identifier Press'.
+  <div class="start-menu">
+  <button class="button" data-passage="Tell me more about how amazing I am!">Tell me more about how amazing I am! </button>
+</div>
+
+
+:: TIFFani [General] {"position":"1500,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png" alt="TIFFani">
+  </div>
+  <div class="char-text">
+    <h2>TIFFani</h2>
+    <p><b>Occupation:</b> Tea room hostess at the Nibble and Byte</p>
+    <p><b>Favourite Location:</b> The tearoom’s back kitchen, where the layers never quite match</p>
+    <p><b>Quote:</b> "Tea always has layers, darling"</p>
+    <p><b>Hobby:</b> Stacking pastries higher than physics should allow</p>
+    <p><b>Village Reputation:</b> Sweet but slightly uncanny</p>
+    <p><b>Pet Peeve:</b> Misaligned saucers</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Talk to Clippy [Story] {"position":"325,675","size":"100,100"}
+"The detective gave me some tips to look for clues. Here's a map of the house, have a look at it and let's get you settled after that. We'll meet in the Skull-ery first thing tomorrow and start our investigation from there.
+  <div class="start-menu">
+  <button class="button" data-passage="Look at the map">Look at the map</button>
+</div>
+
+
+:: Tell me more about how amazing I am! {"position":"500,25","size":"100,100"}
+Well if you insist... There is so much to say!
+
+You of course are THE  itinerant digital preservation practitioner and detective who roams from archive to archive dispensing advice and solving conundrums.
+
+Tales of you have been published in such cases as 'The Adventures of the Forgotten Password',  'The Riddle of the Ghost in the Cloud', 'The Mystery of the Misfiled Metadata' and 'The Case of the Bit Rot Bandit'
+
+Most recently you came into quite a scrape with a corrupted PDF file, a phantom record and some unravelled tapes.
+
+  <div class="start-menu">
+  <button class="button" data-passage="Profile">Find your full profile here </button>
+  <button class="button" data-passage="Get on with doing things">Get on with doing things</button>
+</div>
+
+
+:: Try and get back to sleep {"position":"1000,400","size":"100,100"}
+When you get back to sleep you sleep more deeply and silently than you have ever experienced before. No thoughts cross your mind. You wake up at midday to find the postman has been with bundles of fan mail for your work. After reading the first six letters you give up and drop the rest in the bin.
+<div style="position: relative; display: inline-block;">
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Fanmail.png" alt="Fanmail" width="800">
+
+    <!-- Invisible hotspot linking to Fan Mail Letter #1 -->
+	<a data-passage="Fan Mail Letter #1"
+	   style="position: absolute; 
+	          left: 10px;
+	          top: 50px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+
+    <!-- Invisible hotspot linking to Fan Mail Letter #2 -->
+	<a data-passage="Fan Mail Letter #2"
+	   style="position: absolute; 
+	          left: 290px;
+	          top: 50px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+    <!-- Invisible hotspot linking to Fan Mail Letter #3 -->
+	<a data-passage="Fan Mail Letter #3"
+	   style="position: absolute; 
+	          left: 570px;
+	          top: 50px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+        <!-- Invisible hotspot linking to Fan Mail Letter #4 -->
+	<a data-passage="Fan Mail Letter #4"
+	   style="position: absolute; 
+	          left: 10px;
+	          top: 250px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+            <!-- Invisible hotspot linking to Fan Mail Letter #5 -->
+	<a data-passage="Fan Mail Letter #5"
+	   style="position: absolute; 
+	          left: 290px;
+	          top: 250px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Fan Mail Letter #6 -->
+	<a data-passage="Fan Mail Letter #6"
+	   style="position: absolute; 
+	          left: 570px;
+	          top: 250px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+</div>
+
+
+:: VicarVector [General] {"position":"1500,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/vicar.png" alt="Vicar Vector">
+  </div>
+  <div class="char-text">
+    <h2>Vicar Vector</h2>
+    <p><b>Occupation:</b> Preacher at St Mary of the Lossless</p>
+    <p><b>Favourite Location:</b> The pulpit, where words scale endlessly</p>
+    <p><b>Quote:</b> “The eternal line endures.”</p>
+    <p><b>Hobby:</b> Resizing hymn sheets until unreadable</p>
+    <p><b>Village Reputation:</b> Inspiring yet confusing</p>
+    <p><b>Pet Peeve:</b> Misaligned margins</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: XML family tree {"position":"500,900","size":"100,100"}
+You pull a document between some books. 
+
+Is this a family tree? 
+
+But how is that possible? Who are those people mentioned on there?
+
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/XML_family_tree.png" alt="XML Family tree">
+  <div class="start-menu">
+  <button class="button" data-passage="Explore The Study">Explore the study further</button>
+</div>
+
+
+:: StoryScript [script]
+// Add class on passage start so CSS can target the Start screen
+$(document).on(':passagestart', function (ev) {
+  if (ev.passage.title === "Start") {
+    $('body').addClass('start-screen');
+  } else {
+    $('body').removeClass('start-screen');
+  }
+});
+
+// Suspect Bios
+$(document).on("click", ".suspect-button", function() {
+    // Hide all bios first
+    $(".suspect-bio").hide();
+    // Show the one linked to this button
+    const target = $(this).data("target");
+    $("#" + target).slideDown(300);
+});
+
+// Accordion
+$(document).on("click", ".accordion", function () {
+  $(this).toggleClass("active");
+  const panel = $(this).next(".panel");
+  panel.slideToggle();
+});
+
+:: StoryStylesheet [stylesheet]
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Libre+Baskerville&display=swap');
+
+.start-menu {
+  display: flex;
+  justify-content: center; /* center the buttons horizontally */
+  gap: 0.5em; /* space between buttons */
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  margin-top: 2em;
+}
+
+/* Base page styling */
+body {
+  background-color: #1C1B1A;
+  color: #EDEAE5;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 150%;
+  text-align: justify;
+}
+ 
+/* hide ui-bar and change margin, center text */
+#ui-bar {
+  display: none;
+}
+ 
+#story {
+  margin-left: 0;
+}
+ 
+#passages {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+ 
+.passage {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+ 
+/* Global headings */
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  color: #fffff0 ;
+  text-align: center;
+}
+ 
+/* Button styling */
+/* Button styling */
+.button {
+  padding: 0.8em 1.2em;
+  background-color: #1C1B1A;
+  color: #C89F65;
+  border: 2px solid #C89F65;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button:hover {
+  background-color: #c69d63;
+  color: #EDEAE5;
+  border: 2px solid #C89F65;
+}
+
+.button:active {
+  background-color: #C89F65;
+  color: #1C1B1A;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* border */
+.silent-movie-frame {
+  position: relative;
+  background-color: #1C1B1A;
+  color: #fffff0;
+  padding: 30px;
+  border: 10px solid white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+ 
+.corner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+  pointer-events: none;
+}
+ 
+.corner.tl {
+  top: -10px;
+  left: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/TopLeft.png");
+}
+.corner.tr {
+  top: -10px;
+  right: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/TopRight.png");
+  transform: scaleX(-1);
+}
+.corner.bl {
+  bottom: -10px;
+  left: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/BottomLeft.png");
+  transform: scaleY(-1);
+}
+.corner.br {
+  bottom: -10px;
+  right: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/BottomRight.png");
+  transform: scale(-1, -1);
+}
+ 
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Suspect buttons container */
+.suspect-menu {
+  display: flex;
+  justify-content: center; /* center buttons */
+  gap: 0.5em;
+  flex-wrap: wrap; /* wrap on small screens */
+  margin-bottom: 1em;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #1C1B1A;
+  color: #C89F65;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+  margin-bottom: 5px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #C89F65;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 12px;
+  background-color: #c69d63;
+  max-height: 0;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
+.letter-style {
+
+background: linear-gradient(to bottom, #fdf6e3, #f5e9c8);
+  border: 1px solid #d8cfc4;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1), inset 0 0 5px rgba(0,0,0,0.05);
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 700px;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #3e3e3e;
+  border-radius: 4px;
+
+}
+
+.comic-sans-letter {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: black;
+  border-radius: 4px;
+  border: 2px solid #000;  
+  padding: 20px;          
+  margin: 20px auto;       
+  max-width: 600px;        
+  background-color: #fdf6e3;  
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);  
+  line-height: 1.6; 
+  text-align: left;
+}
+
+.doormat-style {
+  background: repeating-linear-gradient(
+    45deg,
+    #d2b48c,
+    #d2b48c 10px,
+    #c2a679 10px,
+    #c2a679 20px
+  );
+  border: 3px solid #8b6f47;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 0 8px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 700px;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #3e3e3e;
+  border-radius: 6px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Target SugarCube's passage container and other common TF containers */
+#story, #passages, .passage, tw-story, tw-passage {
+  text-align: justify !important;       /* force justify for the passage area */
+  text-justify: inter-word;             /* make justification use inter-word spacing */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;                        /* allow hyphenation for better spacing */
+  text-align-last: left;                /* keep last line left-aligned (optional) */
+}
+
+/* Ensure each paragraph inside passages is justified */
+#passages p, .passage p, tw-passage p {
+  text-align: inherit !important;
+}
