@@ -516,77 +516,68 @@ Unbeknownst to you, you start to sleep walk out of the house and through the win
 <h1>Checksum-on-the-Wold Village Map - Day 2</h1>
 <p>Where will you start your interrogation of the suspects? When you are done investigating the village, return to the manor to rest.</p>
 
+<div style="position: relative; display: inline-block;">
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Village%20map.png" alt="Map" width="800">
 
-<table class="map-table">
-  <tr>
-    <td class="map-cell">
-      <div class="ascii-box">
-+------------------+
-| THE NIBBLE & BYTE|
-|  TIFF'S TEA ROOM |
-+------------------+
-      </div>
-      <<button "Enter Nibble & Byte" "Explore the Tea Room">></button>
-    </td>
-
-
-    <td class="map-cell">
-      <div class="ascii-box">
-+------------------+
-|      THE .PUB    |
-|   JAY SON JNR.   |
-+------------------+
-      </div>
-      <<button "Enter The .pub" "Explore the PUB">></button>
-    </td>
-
-
-    <td class="map-cell">
-      <div class="ascii-box">
-+------------------+
-| ST. MARY OF THE  |
-|    LOSSLESS      |
-+------------------+
-      </div>
-      <<button "Enter St Mary" "Explore the Church">></button>
-    </td>
-  </tr>
+    <a data-passage="Explore the Tea Room"
+	   style="position: absolute; 
+	          left: 15px;
+	          top: 110px;
+	          width: 240px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+    <a data-passage="Explore the PUB"
+	   style="position: absolute; 
+	          left: 270px;
+	          top: 110px;
+	          width: 260px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+    <a data-passage="Explore the Church"
+	   style="position: absolute; 
+	          left: 525px;
+	          top: 110px;
+	          width: 250px;
+	          height: 95px;
+	          display: block;">
+	</a>
 
 
-  <tr>
-    <td class="map-cell">
-      <div class="ascii-box">
-+------------------+
-|  THE VILLAGE     |
-| COMMON (EWE-AN)  |
-+------------------+
-      </div>
-      <<button "Enter Village Common" "Explore the Village Common">></button>
-    </td>
 
 
-    <td class="map-cell">
-      <div class="ascii-box">
-+------------------+
-|   THE POST       |
-| OFFICE (MPEG-GY) |
-+------------------+
-      </div>
-      <<button "Enter Post Office" "Explore the Post Office">></button>
-    </td>
-
-
-    <td class="map-cell">
-      <div class="ascii-box">
-+------------------+
-| LOOPWELL'S GIF   |
-|   MERRY LOOPWELL |
-+------------------+
-      </div>
-      <<button "Enter GIF Shop" "Explore the GIF Shop">></button>
-    </td>
-  </tr>
-</table>
+    <a data-passage="Explore the Village Common"
+	   style="position: absolute; 
+	          left: 15px;
+	          top: 230px;
+	          width: 240px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+    
+    <a data-passage="Explore the Post Office"
+	   style="position: absolute; 
+	          left: 270px;
+	          top: 230px;
+	          width: 260px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+    <a data-passage="Explore the GIF Shop"
+	   style="position: absolute; 
+	          left: 525px;
+	          top: 230px;
+	          width: 250px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+</div>
 <div class="start-menu">
   <button class="button" data-passage="Day 2 Complete">Return to Metadata Manor (End Day 2)</button>
 </div>```
