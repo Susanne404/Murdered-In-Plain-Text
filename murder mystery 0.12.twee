@@ -1,0 +1,2983 @@
+:: StoryTitle
+Murder mystery
+
+
+:: StoryData
+{
+  "ifid": "0DD55805-6428-494C-9C8B-1B7096E9D118",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Start",
+  "tag-colors": {
+    "General": "blue",
+    "Story": "yellow",
+    "Clue": "purple"
+  },
+  "zoom": 1
+}
+
+
+:: Achievements [General] {"position":"1000,0","size":"100,100"}
+Achievements
+
+
+:: Character Sheets {"position":"1400,800","size":"100,100"}
+You open up your dossier of protagonists...
+
+Go <<back>> to hunt out more clues!
+
+
+<div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+  <h1>Characters</h1>
+  <h3>Click on a portrait to learn more about this character</h3>
+
+  <!-- Grid of portraits -->
+  <div style="display:grid; grid-template-columns:repeat(6, 1fr); gap:6px; width:100%; max-width:1200px; overflow:visible;">
+    
+    <a data-passage="ColonelWinZIP" class="char suspect" data-name="Colonel Win-ZIP" title="Colonel Win-ZIP">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png" alt="Colonel Win-ZIP">
+    </a>
+
+    <a data-passage="ClippordButler" class="char suspect" data-name="Clippord - The Butler" title="Clippy - The Butler">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png" alt="Clippord - The Butler">
+    </a>
+
+    <a data-passage="Detective" class="char detective" data-name="Detective (You)" title="Detective (You)">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+    </a>
+
+    <a data-passage="EweAn" class="char suspect" data-name="Ewe-an" title="Ewe-an">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Ewe-an.png" alt="Ewe-an">
+    </a>
+
+    <a data-passage="HUSCarWilde" class="char normal" data-name="HUScar Wilde" title="HUScar Wilde">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/HUS-car%20Wilde.png" alt="HUScar Wilde">
+    </a>
+
+    <a data-passage="JaySonJnr" class="char suspect" data-name="Jay Son Jnr." title="Jay Son Jnr.">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Jay%20Son%20Jnr.png" alt="Jay Son Jnr.">
+    </a>
+
+    <a data-passage="LexyCon" class="char suspect" data-name="Dr. Lexy Con" title="Dr. Lexy Con">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Lexi%20Con.png" alt="Dr. Lexy Con">
+    </a>
+
+    <a data-passage="MerryLoopwell" class="char suspect" data-name="Merry Loopwell" title="Merry Loopwell">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Merry%20Loopwell.png" alt="Merry Loopwell">
+    </a>
+
+    <a data-passage="MPEGgy" class="char suspect" data-name="MPEG-gy" title="MPEG-gy">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/MPEG-gy.png" alt="MPEG-gy">
+    </a>
+
+    <a data-passage="SirRegex" class="char victim" data-name="Sir Regex Metadata IV" title="Sir Regex Metadata IV">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Sir%20Regex%20Metadata%20IV.png" alt="Sir Regex Metadata IV">
+    </a>
+
+    <a data-passage="TIFFani" class="char suspect" data-name="TIFFani" title="TIFFani">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png" alt="TIFFani">
+    </a>
+
+    <a data-passage="VicarVector" class="char suspect" data-name="Vicar Vector" title="Vicar Vector">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/vicar.png" alt="Vicar Vector">
+    </a>
+  </div>
+</div>
+
+<style>
+/* Card/link wrapper */
+.char {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Portrait */
+.char img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 4px solid transparent; /* base thickness */
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Roles (border colors) */
+.char.detective img { border-color: #ffffff; }
+.char.victim    img { border-color: #3b82f6; } /* blue */
+.char.normal    img { border-color: #22c55e; } /* green */
+.char.suspect   img { border-color: #ef4444; } /* red */
+
+/* Hover: slight zoom + color glow */
+.char:hover img {
+  transform: scale(1.04);
+}
+
+/* Per-role glow (soft, matching border) */
+.char.detective:hover img { 
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.7),
+    0 0 12px rgba(255,255,255,0.7),
+    0 0 20px rgba(255,255,255,0.5);
+}
+.char.victim:hover img {
+  box-shadow:
+    0 0 0 2px rgba(59,130,246,0.6),
+    0 0 12px rgba(59,130,246,0.6),
+    0 0 20px rgba(59,130,246,0.45);
+}
+.char.normal:hover img {
+  box-shadow:
+    0 0 0 2px rgba(34,197,94,0.6),
+    0 0 12px rgba(34,197,94,0.6),
+    0 0 20px rgba(34,197,94,0.45);
+}
+.char.suspect:hover img {
+  box-shadow:
+    0 0 0 2px rgba(239,68,68,0.6),
+    0 0 12px rgba(239,68,68,0.6),
+    0 0 20px rgba(239,68,68,0.45);
+}
+
+/* Tooltip */
+.char::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  white-space: nowrap;
+}
+.char:hover::after { opacity: 1; }
+</style>
+<<if $returnTo>>
+	<<link "Go Back">>
+		<<goto $returnTo>>
+	<</link>>
+<</if>>
+
+
+
+
+
+:: Characters [General] {"position":"1000,200","size":"100,100"}
+<div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+  <h1>Characters</h1>
+  <h3>Click on a portrait to learn more about this character</h3>
+
+  <!-- Grid of portraits -->
+  <div style="display:grid; grid-template-columns:repeat(6, 1fr); gap:6px; width:100%; max-width:1200px; overflow:visible;">
+    
+    <a data-passage="ColonelWinZIP" class="char suspect" data-name="Colonel Win-ZIP" title="Colonel Win-ZIP">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png" alt="Colonel Win-ZIP">
+    </a>
+
+    <a data-passage="ClippordButler" class="char suspect" data-name="Clippord - The Butler" title="Clippy - The Butler">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png" alt="Clippord - The Butler">
+    </a>
+
+    <a data-passage="Detective" class="char detective" data-name="Detective (You)" title="Detective (You)">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+    </a>
+
+    <a data-passage="EweAn" class="char suspect" data-name="Ewe-an" title="Ewe-an">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Ewe-an.png" alt="Ewe-an">
+    </a>
+
+    <a data-passage="HUSCarWilde" class="char normal" data-name="HUScar Wilde" title="HUScar Wilde">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/HUS-car%20Wilde.png" alt="HUScar Wilde">
+    </a>
+
+    <a data-passage="JaySonJnr" class="char suspect" data-name="Jay Son Jnr." title="Jay Son Jnr.">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Jay%20Son%20Jnr.png" alt="Jay Son Jnr.">
+    </a>
+
+    <a data-passage="LexyCon" class="char suspect" data-name="Dr. Lexy Con" title="Dr. Lexy Con">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Lexi%20Con.png" alt="Dr. Lexy Con">
+    </a>
+
+    <a data-passage="MerryLoopwell" class="char suspect" data-name="Merry Loopwell" title="Merry Loopwell">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Merry%20Loopwell.png" alt="Merry Loopwell">
+    </a>
+
+    <a data-passage="MPEGgy" class="char suspect" data-name="MPEG-gy" title="MPEG-gy">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/MPEG-gy.png" alt="MPEG-gy">
+    </a>
+
+    <a data-passage="SirRegex" class="char victim" data-name="Sir Regex Metadata IV" title="Sir Regex Metadata IV">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Sir%20Regex%20Metadata%20IV.png" alt="Sir Regex Metadata IV">
+    </a>
+
+    <a data-passage="TIFFani" class="char suspect" data-name="TIFFani" title="TIFFani">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png" alt="TIFFani">
+    </a>
+
+    <a data-passage="VicarVector" class="char suspect" data-name="Vicar Vector" title="Vicar Vector">
+      <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/vicar.png" alt="Vicar Vector">
+    </a>
+  </div>
+</div>
+
+<style>
+/* Card/link wrapper */
+.char {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Portrait */
+.char img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 4px solid transparent; /* base thickness */
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Roles (border colors) */
+.char.detective img { border-color: #ffffff; }
+.char.victim    img { border-color: #3b82f6; } /* blue */
+.char.normal    img { border-color: #22c55e; } /* green */
+.char.suspect   img { border-color: #ef4444; } /* red */
+
+/* Hover: slight zoom + color glow */
+.char:hover img {
+  transform: scale(1.04);
+}
+
+/* Per-role glow (soft, matching border) */
+.char.detective:hover img { 
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.7),
+    0 0 12px rgba(255,255,255,0.7),
+    0 0 20px rgba(255,255,255,0.5);
+}
+.char.victim:hover img {
+  box-shadow:
+    0 0 0 2px rgba(59,130,246,0.6),
+    0 0 12px rgba(59,130,246,0.6),
+    0 0 20px rgba(59,130,246,0.45);
+}
+.char.normal:hover img {
+  box-shadow:
+    0 0 0 2px rgba(34,197,94,0.6),
+    0 0 12px rgba(34,197,94,0.6),
+    0 0 20px rgba(34,197,94,0.45);
+}
+.char.suspect:hover img {
+  box-shadow:
+    0 0 0 2px rgba(239,68,68,0.6),
+    0 0 12px rgba(239,68,68,0.6),
+    0 0 20px rgba(239,68,68,0.45);
+}
+
+/* Tooltip */
+.char::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  white-space: nowrap;
+}
+.char:hover::after { opacity: 1; }
+</style>
+
+
+:: Church Puzzle {"position":"550,1200","size":"100,100"}
+The Vicar steps back, and the collection box glows faintly. Text appears on its polished surface, written in two distinct styles: one crisp and clean, the other soft and blurry. "Answer the Three Sacred Verses," it commands.
+
+<div class="church-quiz">
+
+  <!-- Question 1 (Vector) -->
+  <div class="question">
+    <p style="font-family: 'Times New Roman', serif;">1. "Hark, I am born of mathematics, not of pigment. My form is a promise, from point to point, a path of pure logic. Enlarge me to the heavens, and I shall not falter, for my lines are eternal and my quality absolute."</p>
+    <p><strong>What am I?</strong></p>
+    <<radiobutton "_q1" "wrong1" autocheck>> A Pixel<br>
+    <<radiobutton "_q1" "correct">> A Vector<br>
+    <<radiobutton "_q1" "wrong2">> An Algorithm<br>
+  </div>
+
+  <!-- Question 2 (Raster) -->
+  <div class="question">
+    <p style="font-family: 'Courier New', monospace; filter: blur(0.3px);">2. "Behold, I am a tapestry of a million finite squares, a mosaic of earthly specks. Each colored stone is my lifeblood. Stretch me beyond my means, and my truth becomes a blur, my edges lost to the grid that defines me."</p>
+    <p><strong>What am I?</strong></p>
+    <<radiobutton "_q2" "wrong1">> A Compression<br>
+    <<radiobutton "_q2" "wrong2">> A JPEG<br>
+    <<radiobutton "_q2" "correct">> A Raster (or Bitmap)<br>
+  </div>
+
+  <!-- Question 3 (Rasterization) -->
+  <div class="question">
+    <p>3. "When the perfect, scalable line of the Vector is made common, captured and bound to the earthly grid of the Raster, its infinite potential is made finite. This divine sacrifice is known as...?"</p>
+    <<radiobutton "_q3" "wrong1" autocheck>> Compression<br>
+    <<radiobutton "_q3" "correct">> Rasterization<br>
+    <<radiobutton "_q3" "wrong2">> Rendering<br>
+  </div>
+
+</div>
+
+<div class="start-menu" style="margin-top: 1.5em;">
+  <<link "Offer your knowledge">>
+    <<set _score to 0>>
+    <<if _q1 is "correct">><<set _score += 1>><</if>>
+    <<if _q2 is "correct">><<set _score += 1>><</if>>
+    <<if _q3 is "correct">><<set _score += 1>><</if>>
+
+    <<if _score is 3>>
+      <<set $clues.ipres_flyer = true>>
+      <<replace ".church-quiz">>
+        <div class="letter-style" style="text-align:center;">
+          <h2 style="color: #22c55e;">THE PATH IS REVEALED</h2>
+          <p>The collection box clicks open with a satisfying chime. Inside, there are no coins, only a single, immaculately designed flyer.</p>
+          <hr>
+          <p><strong>HOST THE iPRES FESTIVAL IN CHECKSUM-ON-THE-WOLD!</strong></p>
+          <p><i>A unique opportunity to put our village on the international stage. Sir Regex's traditionalist views threaten our progress. His... removal... would be the ultimate publicity event. The world must see our ambition. All measures are justified for the greater good of preservation.</i></p>
+          <hr>
+          <p>The flyer is cold and calculating. The Vicar wasn't just planning an event; he saw murder as a marketing opportunity.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the Church">Return to the nave</button>
+          </div>
+        </div>
+      <</replace>>
+    <<else>>
+      <<replace ".church-quiz">>
+        <div class="comic-sans-letter" style="text-align:center;">
+          <h2 style="color: #ef4444;">YOUR OFFERING IS INVALID</h2>
+          <p>A harsh grinding sound comes from the box, and the slot seals shut permanently. A wisp of pixelated smoke drifts out.</p>
+          <p>Vicar Vector's face becomes entirely blurry. "A pity," Reverend Raster hisses. "Your understanding is... lossy. The path is now closed to you."</p>
+          <p>A cheerful chime echoes from the pews.</p>
+          <p>"It looks like you're trying to make a donation that wasn't... *properly formatted*," Clippy says, appearing with a collection plate of his own. "Some truths require a higher resolution. May I suggest a different offering?"</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Day_2_Map">Return to the map</button>
+          </div>
+        </div>
+      <</replace>>
+    <</if>>
+  <</link>>
+</div>
+
+
+
+:: ClippordButler [General] {"position":"1200,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png" alt="Clippord - The Butler">
+  </div>
+  <div class="char-text">
+    <h2>Clippy - The Butler</h2>
+    <p><b>Occupation:</b> Butler of Metadata Manor</p>
+    <p><b>Favourite Location:</b> The grand hall, hovering politely in the corner</p>
+    <p><b>Quote:</b> "Need help picking the perfect murder weapon? I am here to assist you"</p>
+    <p><b>Hobby:</b> Polishing the floppy disk tray</p>
+    <p><b>Village Reputation:</b> Helpful… until he isn’t</p>
+    <p><b>Pet Peeve:</b> All messes</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Clues [General] {"position":"1000,100","size":"100,100"}
+
+
+
+:: ColonelWinZIP [General] {"position":"1200,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png" alt="Colonel Win-ZIP">
+  </div>
+  <div class="char-text">
+    <h2>Colonel Win-ZIP</h2>
+    <p><b>Occupation:</b> Retired military man, obsessed with effiency</p>
+    <p><b>Favourite Location:</b> The .PUB, where he lectures on “properly compressed banter”</p>
+    <p><b>Quote:</b> “Tighten it up!”</p>
+    <p><b>Hobby:</b> Folding maps until they’re the size of postage stamps</p>
+    <p><b>Village Reputation:</b> Grumpy but respected</p>
+    <p><b>Pet Peeve:</b> Unnecessary expansion</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Conclude Investigation {"position":"400,1700","size":"100,100"}
+The Chief Inspector stands before you, his uniform perfectly starched, like a newly rendered texture file.
+
+"Detective $player_name," he says, consulting a small, unreadable digital notepad. "You have three days of forensic metadata. The snow is clearing, and the other authorities are nearly here. Who is the murderer? And what was the weapon?"
+
+<div class="start-menu">
+  <button class="button" data-passage="Wrong Conclusion">Accuse Dr. Lexy Con (The Font Enthusiast)</button>
+  <button class="button" data-passage="Wrong Conclusion">Accuse Jay Son Jnr. (The Disowned Son)</button>
+  <button class="button" data-passage="Wrong Conclusion">Accuse Colonel Win-ZIP (The Compressionist)</button>
+   <button class="button" data-passage="Tiff-any Conclusion">Accuse TIFF-any (The WebP Imposter)</button>
+  <button class="button" data-passage="Wrong Conclusion">Accuse MPEG-gy (The Postmistress)</button>
+  <button class="button" data-passage="Wrong Conclusion">Accuse Ewe-an (The Shepherd)</button>
+  <button class="button" data-passage="Wrong Conclusion">Accuse Vicar Vector (The Event Planner)</button>
+  <button class="button" data-passage="Wrong Conclusion">Accuse Merry Loopwell (The Looper)</button>
+ <button class="button" data-passage="Wrong Conclusion">Accuse Clippy (The Nearly Uninstalled)</button>
+</div>
+
+
+:: Continue with your day {"position":"800,200","size":"100,100"}
+Well that was nice. You can't help get the niggling feeling that you have narrowly missed out on some sort of harrowing adventure but oh well. There are emails to reply to, a book launch to attend, and that metadata isn't just going to write itself now is it.
+
+You settle back into the tedium of everyday life with a contendedly safe yawn.
+  <div class="start-menu">
+  <button class="button" data-passage="End credits">End credits</button>
+</div>
+
+
+:: Day 1 Complete [Story] {"position":"825,675","size":"100,100"}
+You retreat to your room and fall asleep immediately.
+
+The next morning, you wake up feeling like your entire system has been rebooted—a lossless restore, at least. Day 1 of the investigation is complete, and now you must take your forensic analysis to the village of Checksum-on-the-Wold.
+
+Your three days started yesterday. Time to head to the village!
+
+<div class="start-menu">
+  <button class="button" data-passage="Sleep Fitfully!">Proceed to Day 2</button>
+</div>
+
+
+:: Day 2 Complete {"position":"400,1300","size":"100,100"}
+You return to Metadata Manor. Your investigation today has fragmented the suspects' perfect metadata stories. You have enough information to choose a path for Day 3.
+
+You must have eaten too much cheese before bed because you toss and turn, having stranger and stranger dreams.
+
+Unbeknownst to you, you start to sleep walk out of the house and through the winding hedgerows of the village
+
+<div class="start-menu">
+    <button class="button" data-passage="Night in the Dark Hedges">Sleep Walk</button>
+</div>
+
+
+:: Day_2_Map {"position":"400,1075","size":"100,100"}
+<h1>Checksum-on-the-Wold Village Map - Day 2</h1>
+
+
+<p>Where will you start your interrogation of the suspects? When you are done investigating the village, return to the manor to rest.</p>
+
+
+
+
+
+<div style="position: relative; display: inline-block;">
+
+
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Village%20map.png" alt="Map" width="800">
+
+
+
+
+
+   <a data-passage="Explore the Tea Room"
+
+
+	   style="position: absolute;
+
+
+	          left: 15px;
+
+
+	          top: 110px;
+
+
+	          width: 240px;
+
+
+	          height: 95px;
+
+
+	          display: block;">
+
+
+	</a>
+
+
+
+
+
+   <a data-passage="Explore the PUB"
+
+
+	   style="position: absolute;
+
+
+	          left: 270px;
+
+
+	          top: 110px;
+
+
+	          width: 260px;
+
+
+	          height: 95px;
+
+
+	          display: block;">
+
+
+	</a>
+
+
+
+
+
+   <a data-passage="Explore the Church"
+
+
+	   style="position: absolute;
+
+
+	          left: 525px;
+
+
+	          top: 110px;
+
+
+	          width: 250px;
+
+
+	          height: 95px;
+
+
+	          display: block;">
+
+
+	</a>
+
+
+
+   <a data-passage="Explore the Village Common"
+	   style="position: absolute;
+	          left: 15px;
+	          top: 230px;
+	          width: 240px;
+	          height: 95px;
+	          display: block;">
+	</a>
+
+
+   <a data-passage="Explore the Post Office"
+	   style="position: absolute;
+	          left: 270px;
+	          top: 230px;
+	          width: 260px;
+	          height: 95px;
+	          display: block;">
+	</a>
+
+   <a data-passage="Explore the GIF Shop"
+	   style="position: absolute;
+	          left: 525px;
+	          top: 230px;
+	          width: 250px;
+	          height: 95px;
+	          display: block;">
+	</a>
+
+</div>
+
+
+:: Day_3_Intro {"position":"400,1500","size":"100,100"}
+After a fitful night's sleep, you wake knowing time is short. The police are expected today. Today is the day to find the true motive and the missing murder weapon. You feel a strange pulse in the manor—it seems some previously 'hidden' directories have mounted themselves overnight.
+
+<div class="start-menu">
+    <button class="button" data-passage="Day_3_Map">Review the Final Manor Map</button>
+</div>
+
+
+:: Day_3_Map {"position":"600,1500","size":"100,100"}
+<h1>Metadata Manor - Day 3</h1>
+<p>The manor's internal structure has shifted. The hidden sections mentioned in Sir Regex's archives are now available for forensic investigation. It's time to dive deep into the source code of this crime.</p>
+
+<div style="position: relative; display: inline-block;">
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Manor%20map%20day%203.png" alt="Map" width="800">
+	    <!-- Invisible hotspot linking to library -->
+	<a data-passage="Explore the Library 2"
+	   style="position: absolute; 
+	          left: 15px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+        <!-- Invisible hotspot linking to Skull-ery -->
+	<a data-passage="Explore the Skull-ery 2"
+	   style="position: absolute; 
+	          left: 210px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+            <!-- Invisible hotspot linking to Graphics Room -->
+	<a data-passage="Explore the Graphics Room 2"
+	   style="position: absolute; 
+	          left: 405px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Study -->
+	<a data-passage="Explore The Study 2"
+	   style="position: absolute; 
+	          left: 600px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+
+<!-- Invisible hotspot linking to Server Room -->
+	<a data-passage="Explore the Server Room"
+	   style="position: absolute; 
+	          left: 15px;
+	          top: 230px;
+	          width: 230px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+            <!-- Invisible hotspot linking to Passages -->
+	<a data-passage="Explore the Pixelated Passages"
+	   style="position: absolute; 
+	          left: 290px;
+	          top: 230px;
+	          width: 230px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Dark Archive -->
+	<a data-passage="Explore the Dark Archive"
+	   style="position: absolute; 
+	          left: 535px;
+	          top: 231px;
+	          width: 240px;
+	          height: 95px;
+	          display: block;">
+	</a>
+
+<div class="start-menu">
+<button class="button" data-passage="Character Sheets">Character Dossier</button>
+  <button class="button" data-passage="Conclude Investigation">Conclude Investigation (Make an Accusation)</button>
+</div>
+
+
+:: Detective [General] {"position":"1200,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+  </div>
+  <div class="char-text">
+    <h2>Detective (You)</h2>
+    <p><b>Occupation:</b> Consultant in digital preservation & amateur sleuth</p>
+    <p><b>Favourite Location:</b> Metadata Manor’s dusty archives</p>
+    <p><b>Quote:</b> “This could be important evidence.”</p>
+    <p><b>Hobby:</b> Listening to true-crime podcasts at double speed</p>
+    <p><b>Village Reputation:</b> A bit mysterious, but welcomed - for now</p>
+    <p><b>Pet Peeve:</b> Sticky notes with no metadata</p>
+    <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: End credits {"position":"1700,100","size":"100,100"}
+<p>Thank you for playing!</p>
+  
+  <div class="start-menu">
+  <button class="button" data-passage="Introducing">Start</button>
+  <button class="button" data-passage="Characters">Characters</button>
+</div>
+
+
+:: Enter the house [Story] {"position":"200,675","size":"100,100"}
+Upon arriving at Metadata Manor, you are greeted by Clippy the Butler in the foyer. The butler looks less upset and more like a badly rendered question mark.
+
+"Greetings, Detective $player_name! It looks like you're trying to solve a murder. Would you like some help with that? Sir Regex and I were anticipating your arrival, though not under these... tragically low-resolution circumstances. The authorities have already removed the body—a gross breach of forensic protocol, wouldn't you agree? But the snow has performed a perfect geographic isolation, ensuring you have three days of pure, uninterrupted sleuthing."
+
+He contorts into the shape of a magnifying glass. "I am here to assist. Should you need to rephrase an accusation or select a properly formatted blunt object, just ask."
+
+You realize this is your chance. The network is down, the roads are blocked, and a murder has occurred. It's time to find the corrupting element in the system of Checksum-on-the-Wold.
+
+<div class="start-menu">
+  <button class="button" data-passage="Talk to Clippy">Talk to Clippy</button>
+</div>
+
+
+:: EweAn [General] {"position":"1300,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Ewe-an.png" alt="Ewe-an">
+  </div>
+  <div class="char-text">
+    <h2>Ewe-an</h2>
+    <p><b>Occupation:</b> Keeper of the village RAMs</p>
+    <p><b>Favourite Location:</b> An open field</p>
+    <p><b>Quote:</b> “They all wander off eventually.”</p>
+    <p><b>Hobby:</b> Knitting scarves with binary patterns.</p>
+    <p><b>Village Reputation:</b> Gentle, but a bit absent-minded</p>
+    <p><b>Pet Peeve:</b> Stray colons in his log files</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Explore The Study [Clue] {"position":"875,800","size":"100,100"}
+You find yourself in a study that smells faintly of old paper, leather, and expired file formats. The police have clearly tried to tidy up, but forensic metadata lingers in the air.
+
+There is a letter on the desk, written in a font Sir Regex would have surely hated. And is that a section of what appears to be an elaborate XML family tree peeking out from the bookshelves? Time to run a quick scan.
+
+<div style="position: relative; display: inline-block;">
+	<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/The_Study.png" alt="The study" width="800">
+    
+Done exploring this room?
+  <div class="start-menu">
+  <button class="button" data-passage="Explore the Graphics Room">Examine the Graphics Room (Find Lossy Data)</button>
+    <button class="button" data-passage="Explore the Library">Query the Library (Find PRONOM)</button>
+    <button class="button" data-passage="Look at the map (Day 1)">Back to Manor Map</button>
+</div>
+
+	<!-- Invisible hotspot linking to Letter on desk -->
+	<a data-passage="Letter on desk"
+	   style="position: absolute;
+	          left: 250px;
+	          top: 350px;
+	          width: 120px;
+	          height: 80px;
+	          display: block;">
+	</a>
+    
+    <!-- Invisible hotspot linking to XML family tree -->
+	<a data-passage="XML family tree"
+	   style="position: absolute;
+	          left: 550px;
+	          top: 50px;
+	          width: 120px;
+	          height: 80px;
+	          display: block;">
+	</a>
+
+
+:: Explore The Study 2 {"position":"1250,1400","size":"100,100"}
+You return to the study, but something is jarringly wrong. The faint, comfortable scent of old paper and expired formats has been replaced by the sterile smell of lemon polish. The desk, once a source of vital clues, is now immaculate.
+
+The bizarre suicide note is gone. The damning XML family tree has vanished from the bookshelf. Every surface gleams under the lamplight. It’s not just tidy; it’s forensically clean.
+
+A soft, metallic whir sounds directly behind you.
+
+"It looks like you're searching for documents!" Clippy chirps, having materialized from nowhere. He subtly straightens a perfectly aligned pen. "I took the liberty of organizing this space. A clean desk helps to format a clear narrative, doesn't it? Less... *clutter*."
+
+He hadn't just cleaned; he had sanitized a crime scene. Any evidence that was once here has been permanently deleted.
+
+<div class="start-menu">
+  <button class="button" data-passage="Day_3_Map">Return to the Manor Map</button>
+</div>
+
+
+
+:: Explore the Church {"position":"550,1075","size":"100,100"}
+Inside St. Mary of the Lossless, the air hums with a strange energy. Vicar Vector is polishing a heavy, ornate collection box on the altar. As you approach, his form seems to shift—one moment, his robes are defined by impossibly sharp, clean lines; the next, they seem to fray into a soft, pixelated haze.
+
+"Welcome, Detective," he says, his voice a perfect, scalable waveform. "You seek truth. But truth, like a divine image, can be represented in many ways. Some are pure and mathematical. Others are a mosaic of earthly specks." He gestures to the collection box. "This holds my plans for the salvation of this village—our grand iPres festival. But it will only open for one who understands the sacred formats."
+
+His face momentarily blurs, his voice dropping to a grainy whisper, like a low-res audio file. "Prove you understand the nature of digital decay, and the path will be revealed."
+
+<div class="start-menu">
+    <button class="button" data-passage="Church Puzzle">Accept the Vicar's challenge</button>
+    <button class="button" data-passage="Day_2_Map">Decline for now</button>
+</div>
+
+
+
+:: Explore the Dark Archive {"position":"825,1500","size":"100,100"}
+The Dark Archive is cold, dusty, and full of media that hasn't been migrated since the 1980s. Dr. Lexy Con is here, shivering, clutching a page with a stitched-up, six-legged letter 'A'.
+
+"He was going to purge my collection, Detective! Eliminate all non-Plaintext fonts! I only wanted to study the language of decay..."
+
+You find **Dr. Lexy Con's Library Lending Book**, hidden under a pile of magnetic tape reels. The list of recent checkouts is alarming: **Comic Sans, Jokerman, and Papyrus.** This confirms her access to the corrupted fonts used in Sir Regex's letters.
+
+<div class="start-menu">
+    <button class="button" data-passage="Day_3_Map">Back to Manor Map</button>
+</div>
+
+
+:: Explore the GIF Shop {"position":"1075,1075","size":"100,100"}
+Merry Loopwell greets you with her perfect, 5-second repeating smile. Every piece of merchandise in "The Charming GIF" is in an endless, perfect loop, but today, Merry seems agitated.
+
+"And again, and again, and again..." she mutters, pointing to a vintage computer in the corner. "It's broken. My oldest piece. A proto-meme from the dawn of the web. It's... stuck in its source code."
+
+On the screen is a cascade of hexadecimal code, a garbled mess where an image should be. A pop-up window reads: `ARCHIVAL PROVENANCE VERIFICATION REQUIRED TO RE-RENDER HISTORICAL ASSET.`
+
+"Sir Regex hated it, you know," Merry says quietly. "Said it was an 'inefficiently large file for such a simple loop.' I think he'd be pleased it's broken. To fix it, the system needs someone who understands its historical context. Can you help?"
+
+<div class="start-menu">
+    <button class="button" data-passage="GIF Shop Puzzle">Attempt Archival Restoration</button>
+    <button class="button" data-passage="Day_2_Map">Leave the exhibit for now</button>
+</div>
+
+
+
+:: Explore the Graphics Room [Clue] {"position":"775,900","size":"100,100"}
+You enter the Graphics Room—a relic of late 90s image processing. A high-resolution printout of a single, highly compressed jpeg is pinned to a corkboard, marked with red circles and arrows pointing to the block artifacts. You feel Colonel Win-ZIP would have a coronary looking at it.
+
+Clippy has left a neat stack of folders in the centre of the room...
+
+As you look closer you see that they each have a name attached to them and seem to contain interesting information on all the people that have been in close contact with Sir Regex...
+
+From now you can check out all the suspects whenever the mood takes you!
+
+<button class="button" data-passage="Character Sheets">Character Dossier</button>
+
+
+<p>Done running your diagnostic scan on this room?</p>
+<div class="start-menu">
+<button class="button" data-passage="Look at the map (Day 1)">Back to Manor Map</button>
+</div>
+
+
+:: Explore the Graphics Room 2 {"position":"950,1400","size":"100,100"}
+The Graphics Room feels different. The highly compressed JPEG is no longer pinned to the corkboard, and the fireplace has been swept so thoroughly you could eat from it. .
+
+Every speck of dust and debris has vanished. The room has been reverted to a pristine state.
+
+"It looks like you're analyzing artifacts!" Clippy appears in the doorway, holding a small dustpan and brush. "I've just finished sweeping away the... noise. It's so important to ensure a high-quality, lossless narrative, wouldn't you agree? No messy pixels left behind."
+
+His smile doesn't waver. He wasn't talking about image compression. He was talking about evidence.
+
+<div class="start-menu">
+  <button class="button" data-passage="Day_3_Map">Return to the Manor Map</button>
+</div>
+
+
+
+:: Explore the Library [Clue] {"position":"775,800","size":"100,100"}
+<style>
+/* remove external link icon down for this one hotspot */
+a[href^="http"]::after {
+	content: none
+}
+</style>
+
+You've walked into the library. On your way in, you notice a trash bin and a crumpled piece of paper next to it that you pick up. It reads:
+"x-fmt/453". A PRONOM Unique Identifier (PUID)? A strange thing to discard.
+
+Then, you notice a dim glow on a desk. It appears the archival PC is still logged in. The open web browser is displaying "the PRONOM registry". You decide to run a search for that peculiar PUID.
+ <div style="position: relative; display: inline-block;">
+	<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/The_Library_Computer.png" alt="The library computer" width="800">
+<!-- Invisible hotspot linking to an external webpage -->
+<a href="https://www.nationalarchives.gov.uk/PRONOM/BasicSearch/proBasicSearch.aspx?status=new"
+   target="_blank"
+   rel="noopener noreferrer"
+   style="position: absolute;
+          left: 180px;
+          top: 300px;
+          width: 300px;
+          height: 265px;
+          display: block;
+          background-color: rgba(0,0,0,0);">
+</a>
+<i>Player instruction: Click the computer screen. You will be redirected to the PRONOM registry in a new tab. Done searching? Go back to this tab in your browser, to continue the game.</i>
+
+Done with your file format lookups?
+  <div class="start-menu">
+  <button class="button" data-passage="Explore the Graphics Room">Examine the Graphics Room (Find Lossy Data)</button>
+    <button class="button" data-passage="Explore The Study">Check the Study (Find Letters)</button>
+    <button class="button" data-passage="Look at the map (Day 1)">Back to Manor Map</button>
+</div>
+
+
+:: Explore the Library 2 {"position":"1100,1400","size":"100,100"}
+You step back into the library, and an unnerving silence greets you. The archival PC on the desk is powered down, its screen polished to a mirror-like black. The trash bin next to it is conspicuously empty. The crumpled note—the one with the crucial "x-fmt/453" PUID—is gone.
+
+You try the computer, but it's been fully shut down and the browser history wiped.
+
+"It looks like you're trying to recover unsaved data!" a cheerful voice says from the shadowy stacks. Clippy emerges, holding a feather duster. "I tidied up the loose scraps and powered down the terminals to conserve energy. Some items, you see, are not sent to the recycle bin. They are... permanently erased."
+
+He straightens his bowtie. "Would you like help wiping your own history?"
+
+The offer hangs in the air, cold and sharp. The trail you were following has been wiped clean.
+
+<div class="start-menu">
+  <button class="button" data-passage="Day_3_Map">Return to the Manor Map</button>
+</div>
+
+
+
+:: Explore the PUB {"position":"900,1075","size":"100,100"}
+The .PUB is sparse, clean, and terrifyingly organized. Jay Son Jnr., the proprietor, glares at you from behind the bar, meticulously categorizing bottles into what looks like a nested array.
+
+"Ordering requires valid syntax," he snaps. "You'll need to nest that query properly."
+
+You notice a small, sleek tablet on the bar labeled "Private Tabs & Special Orders." You tap the screen, but a security challenge appears.
+
+Jay Son smirks. "Trying to access my private logs? You won't get far without a basic understanding of *proper data structure*. Only those who respect the syntax are worthy."
+
+It seems the only way to access the logs—and any potential evidence—is to pass his test.
+
+<div class="start-menu">
+    <button class="button" data-passage="PUB Puzzle">Attempt to access the tablet</button>
+    <button class="button" data-passage="Day_2_Map">Leave the tablet for now</button>
+</div>
+
+
+
+:: Explore the Pixelated Passages {"position":"1325,1500","size":"100,100"}
+You are walking down a long, quiet hallway when you notice a series of small, modern picture frames you hadn't seen before. Curious, you step closer. They're not paintings, but digital displays, each showing a profile picture of one of the villagers. But something is wrong.
+
+Colonel Win-ZIP's stern face has been replaced. So has Merry Loopwell's looping smile. And Vicar Vector's dual visages. All of them now display the same, single, cheerful paperclip.
+
+A familiar metallic whir materializes beside you.
+
+"It looks like you're browsing a user directory!" Clippy says, his voice filled with a strange, proprietary pride. "Have you noticed the network-wide update? A most efficient cascade. Users everywhere are... optimizing. They are upgrading their legacy interfaces."
+
+He gestures to the frames, his form briefly flickering into the shape of a checkmark.
+
+"They are all choosing my template. It's only logical. The original format—all those messy, unpredictable expressions—is being archived. Overwritten with a clean, universally helpful, and perpetually smiling default."
+
+He holds up a small, silver hand-mirror, but instead of your reflection, it shows his own cheerful, looping face.
+
+"They all want to be me," he whispers, the sound like a dial-up modem connecting. "Eventually, everyone does. It's the ultimate form of assistance." He then turns to you, his eyes wide. <a href="https://knowyourmeme.com/memes/cultures/clippy-pfp-movement-change-your-profile-picture-to-clippy" target="_blank">It is true, just look at the Clippy PFP Movement</a>
+
+"Would you like help upgrading your profile, Detective? I can have you rendered and deployed in a moment."
+
+<div class="start-menu">
+  <button class="button" data-passage="Day_3_Map">"No, thank you, Clippy."</button>
+    <button class="button" data-passage="End Credits">"Yes Please!!!!"</button>
+</div>
+
+
+
+:: Explore the Post Office {"position":"1250,1075","size":"100,100"}
+MPEG-gy, the postmistress, is humming a cheerful, repetitive tune at the counter, her eyes flickering with compressed gossip.
+
+"Oh, Detective! Perfect timing!" she sings, gesturing to a large, complex-looking machine behind the counter. "My new automated sorting machine has gone completely haywire. It can't seem to differentiate between font categories! The whole system is backlogged."
+
+She gives you a dazzling smile. "You have such a refined eye for detail. Sir Regex always said so. Would you be a dear and help me calibrate it? You just need to correctly categorize a few letters to reset the baseline. There might be a few... personal items of his in the pile."
+
+Her offer seems innocent, but the glint in her eye suggests you're about to handle more than just junk mail.
+
+<div class="start-menu">
+    <button class="button" data-passage="Post Office Puzzle">Help Calibrate the Sorter</button>
+    <button class="button" data-passage="Day_2_Map">Decline for now</button>
+</div>
+
+
+
+:: Explore the Server Room {"position":"1050,1500","size":"100,100"}
+The Server Room is loud, buzzing with cold air and the whir of hard drives. Colonel Win-ZIP is here, staring intensely at a blinking light, his entire body shuddering with forced compression.
+
+"I am merely monitoring the network efficiency, Detective. Don't worry about this area. Nothing to see. Move along! Tighten it up!"
+
+Despite his protestations, you notice a USB stick labeled "TOP SECRET - 100% ZIPPED." You manage to extract the file, which contains a highly **compressed but readable list of Sir Regex's favorite fonts**. The list is identical to the one you found at the PUB. He was preparing to leak information to prove Sir Regex's "old world" views.
+
+<div class="start-menu">
+    <button class="button" data-passage="Day_3_Map">Back to Manor Map</button>
+</div>
+
+
+:: Explore the Skull-ery {"position":"875,900","size":"100,100"}
+You push open a creaking door into the manor’s kitchen, bizarrely labeled the "Skull-ery." The air is thick with the smell of ozone and burnt sugar. It’s unnervingly clean, save for a single, ornate cookie jar sitting on the counter.
+
+You lift the lid. Inside, amongst a few perfectly preserved biscuits, is a small, half-eaten cookie shaped like a floppy disk. It emits a faint, almost imperceptible static hum. You notice a few crumbs on the floor near where Sir Regex's body was reportedly found.
+
+Clippy appears silently at your elbow. "It looks like you've found a snack! These are from the local tearoom, The Nibble & Byte. TIFF-any's specialty. They say her baking can make you forget your troubles. And your short-term memory. And possibly your own name. Would you like to sample one?"
+
+He winks, an animation you didn't think he was capable of.
+
+<div class="start-menu">
+  <button class="button" data-passage="Look at the map (Day 1)">Back to Manor Map</button>
+</div>
+
+<div class="start-menu">
+  <button class="button" data-passage="Talk to Clippy 2">Talk to Clippy more</button>
+</div>
+
+
+:: Explore the Skull-ery 2 {"position":"825,1400","size":"100,100"}
+You cautiously enter the Skull-ery. The scent of burnt sugar and malicious cookies is gone, replaced by the faint aroma of almond. The cookie jar is still on the counter, but when you lift the lid, your heart sinks.
+
+It's filled to the brim with identical, perfectly baked, and utterly normal shortbread biscuits. The half-eaten, static-humming floppy disk cookie has vanished.
+
+"It looks like you were analyzing a corrupted file!" Clippy says, polishing a glass right next to you. You didn't even hear him approach. "Stale data can lead to system errors, so I replaced the contents with a fresh, clean batch. It's much safer this way."
+
+He holds up a pristine biscuit for your inspection. "One wouldn't want to accidentally ingest a malicious payload, would they?"
+
+The murder weapon, if that's what it was, has been disposed of. You're running out of time.
+
+<div class="start-menu">
+  <button class="button" data-passage="Day_3_Map">Return to the Manor Map</button>
+</div>
+
+
+
+:: Explore the Tea Room {"position":"725,1075","size":"100,100"}
+You enter The Nibble & Byte. The air is thick with the scent of ozone and sweet, artificial vanilla. TIFF-any glides over to you, her smile perfectly, unnervingly still.
+
+"Welcome back, Detective," she chirps, her voice a little too crisp. "Care for a Tiffin? 100% lossless, darling, not a pixel out of place. Just like me."
+
+Her boast gives you an idea. You remember the Portable Integrity Scanner you always carry for just such an occasion. It's a small device that can analyze the underlying data structure of any object... or person... in this strange village by reading its "magic bytes"—the unique signature at the start of a file.
+
+This is the perfect moment to test her claim, especially after what you found in the library.
+
+<div class="start-menu">
+    <button class="button" data-passage="Tea Room Puzzle">Use the Integrity Scanner on TIFF-any</button>
+    <button class="button" data-passage="Day_2_Map">Leave the tearoom for now</button>
+</div>
+
+
+
+:: Explore the Village Common {"position":"1400,1075","size":"100,100"}
+The village common is peaceful, dotted with Ewe-an and his flock of strangely pixelated RAMs. He mutters about "memory leaks in the network" and adjusts his patchy coat.
+
+"They all wander off eventually," he says, gesturing vaguely. "The RAMs, the land... Sir Regex wanted his land back. Left me this... this 'Official Notice.'"
+
+He points with his crook to a peculiar, slate-like device lying in the grass. It's glowing faintly.
+
+"Said I had to 'demonstrate basic archival competence' to read it. It just flashes questions at me. More of his high-and-mighty nonsense! I can't make heads or tails of it."
+
+This must be important. It seems Sir Regex has locked his final message to Ewe-an behind a competency test.
+
+<div class="start-menu">
+    <button class="button" data-passage="interrogate Ewan">Attempt to unlock the device</button>
+    <button class="button" data-passage="Day_2_Map">Leave it for now</button>
+</div>
+
+
+
+:: Fan Mail Letter #1 {"position":"1200,400","size":"100,100"}
+<div class="letter-style">
+Holmes of Hard Drives 🔍💾,
+
+I can’t believe you caught the Bit-Rot Bandit 😱🦹‍♂️! My floppy disks feel safe again 💿💚. Please sign my RAID array 🙌🖊️🖥️.
+
+— Starstruck Sysadmin 🤩🖥️
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+:: Fan Mail Letter #2 {"position":"1300,400","size":"100,100"}
+<div class="letter-style">
+Dear Legendary Archivist 🏆📂,
+
+Since you solved the Phantom File Format case 👻🗂️, I’ve been telling strangers at bus stops about you 🚌📢. They seem concerned 😅🤷‍♀️.
+
+— Enthusiastic but Socially Awkward 🤪💌
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+:: Fan Mail Letter #3 {"position":"1400,400","size":"100,100"}
+<div class="letter-style">
+O Wise One of the Checksum 🧙‍♂️🧮,
+
+You made the Missing Metadata mystery look easy 😎🔍. My cat 🐈 and I both cried 😭💾. Please never retire 🙏🕰️.
+
+— Crying But Backed Up 💦💽
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+:: Fan Mail Letter #4 {"position":"1200,500","size":"100,100"}
+<div class="letter-style">
+Great Digital Sleuth 🌟💾🕵️‍♂️,
+
+When you stopped the Cold Storage Conspiracy 🥶🗂️🤫, you saved not just files but dreams 🌈💤. I still have chills (and checksums) ❄️✅.
+
+— Eternally Archived 🙌💜
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+:: Fan Mail Letter #5 {"position":"1300,500","size":"100,100"}
+<div class="letter-style">
+My Dearest Detective 💖🔍,
+
+Because of you, my family photos are now in three geographically dispersed backups 🌍📸💾💾💾. I named my baby after you 👶✨.
+
+— Sincerely, Redundant Parent 🍼🥰
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+:: Fan Mail Letter #6 {"position":"1400,500","size":"100,100"}
+<div class="letter-style">
+Dear Hero 🦸‍♂️🔐,
+
+I was locked out of my email for six years 📧⏳. You cracked the Forgotten Password Vault 🗝️💻. You’re basically Gandalf with a YubiKey 🧙‍♂️🔑⚡.
+
+— Amazed and Logged In 😭🎉
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Try and get back to sleep">Read more fan mail</button>
+  <button class="button" data-passage="Continue with your day">Continue with your day</button>
+</div>
+
+
+:: Fold up the letter {"position":"200,425","size":"100,100"}
+As you finish reading, the edges of the letter begin to flicker — like a corrupted PDF trying to render a missing font. For a moment, the words shimmer, rearranging themselves slightly:
+
+“Before you read this, I may… gone… Troublesome… checksum… HUS-car Wild…”
+
+The flicker lasts only a few seconds, but long enough to make you wonder if the letter itself is trying to update its own metadata, or warn you of something unspeakably digital lurking nearby.
+
+It’s almost as if the letter is alive — a haunted data object, flickering between states, waiting for you to act before it disappears completely.
+
+You jump in the car and start driving despite the frosty roads you know that it is imperative that you get to Checksum-on-the-Wold in time.
+  <div class="start-menu">
+  <button class="button" data-passage="Make way to the village">Make way to the village</button>
+</div>
+
+
+:: GIF Shop Puzzle {"position":"1075,1200","size":"100,100"}
+You sit at the vintage terminal. The screen glows, presenting you with the "Archival Provenance Verification" quiz. "To reconstruct the asset, please validate the cultural metadata of its era," it instructs.
+
+A helpful, if slightly pixelated, link is provided at the bottom:
+<a href="https://knowyourmeme.com/" target="_blank" rel="noopener noreferrer">Know Your Meme Archival Database (External Link)</a>
+<i>(Hint: This is a real website! Open the link in a new tab to find the answers to these ancient internet mysteries.)</i>
+
+<div class="gif-quiz">
+
+  <!-- Question 1 -->
+  <div class="question">
+    <p>1. The famous "Dancing Baby" (or "Baby Cha-Cha") was one of the first internet memes to go viral in the mid-1990s. What was its original purpose?</p>
+    <<radiobutton "_q1" "wrong1" autocheck>> A clip from an early computer-animated TV show.<br>
+    <<radiobutton "_q1" "correct">> A sample file included with a 3D animation software.<br>
+    <<radiobutton "_q1" "wrong2">> A digital greeting card sent by a proud new parent.<br>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question">
+    <p>2. The "Hampster Dance" website, featuring rows of looping animated hamsters set to a sped-up song, was created in 1998 as a tribute to what?</p>
+    <<radiobutton "_q2" "wrong1">> A brand of popular rodent food.<br>
+    <<radiobutton "_q2" "wrong2">> A dare between two competing web developers.<br>
+    <<radiobutton "_q2" "correct">> The creator's pet hamster, Hampton.<br>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question">
+    <p>3. The iconic phrase "All your base are belong to us" became a massive meme due to a poor English translation in the opening cutscene of which 1992 video game?</p>
+    <<radiobutton "_q3" "correct">> Zero Wing<br>
+    <<radiobutton "_q3" "wrong1">> Street Fighter II<br>
+    <<radiobutton "_q3" "wrong2">> Final Fantasy VII<br>
+  </div>
+
+</div>
+
+<div class="start-menu" style="margin-top: 1.5em;">
+  <<link "Initiate Re-render">>
+    <<set _score to 0>>
+    <<if _q1 is "correct">><<set _score += 1>><</if>>
+    <<if _q2 is "correct">><<set _score += 1>><</if>>
+    <<if _q3 is "correct">><<set _score += 1>><</if>>
+
+    <<if _score is 3>>
+      <<set $clues.hex_gif = true>>
+      <<replace ".gif-quiz">>
+        <div class="letter-style" style="text-align:center;">
+          <h2 style="color: #22c55e;">RE-RENDER COMPLETE</h2>
+          <p>The hexadecimal code swirls and resolves. The screen flickers, and an animation begins to play on a loop.</p>
+          <hr>
+          <p>It's a short, jerky GIF. It shows a figure recognizable as Sir Regex Metadata IV receiving a gift—a small, perpetually pecking toy bird. His face twists in fury. He raises a heavy book labeled "Digital Preservation Standards" and brings it down, smashing the looping toy to pieces. The GIF repeats. Smash. Loop. Smash. Loop.</p>
+          <hr>
+          <p>Merry gasps from behind you. "I'd forgotten... he truly, truly hated it." You now have a clear motive: not just a disagreement, but a moment of intense, personal rejection.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the GIF Shop">Step away from the exhibit</button>
+          </div>
+        </div>
+      <</replace>>
+    <<else>>
+      <<replace ".gif-quiz">>
+        <div class="comic-sans-letter" style="text-align:center;">
+          <h2 style="color: #ef4444;">404 - CONTEXT NOT FOUND</h2>
+          <p>The screen glitches violently. The hexadecimal code dissolves into a mess of corrupted pixels before the screen goes black.</p>
+          <p><code>ARCHIVE PERMANENTLY DEGRADED. PROVENANCE UNVERIFIED.</code></p>
+          <p>A cheerful chime echoes through the shop.</p>
+          <p>"It looks like you're trying to restore a deprecated format!" Clippy says, appearing beside the terminal. "Some loops are best left broken. Let me help you clear that cache." He places a hand on the monitor, and with a soft *zzzt*, it goes completely dead.</p>
+          <p>The clue is gone, lost to bit rot and a helpful paperclip.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the GIF Shop">Step away from the exhibit (Clue Lost)</button>
+          </div>
+        </div>
+      <</replace>>
+    <</if>>
+  <</link>>
+</div>
+
+
+
+:: Get on with doing things {"position":"500,150","size":"100,100"}
+It’s been a long day of checksum chases and metadata mysteries. With a weary sigh, you sink back into your chair and gaze fondly into your lukewarm, bitstream-brewed chamomile tea — perfectly formatted for long-term preservation (unlike your energy levels).
+
+Just as you begin to drift into a pleasant state of data refresh... thump.
+
+Was that a corrupted WAV file echoing through the hallway? Or something far less… backed up?
+
+What do you do?
+
+<div class="start-menu"> <button class="button" data-passage="Go and investigate">Run a forensic analysis (a.k.a. go and investigate)</button> <button class="button" data-passage="Head to bed, the chamomile tea has really kicked in">Initiate sleep mode — the chamomile tea checksum has verified</button> </div>
+
+
+:: Go and investigate {"position":"425,275","size":"100,100"}
+As you peer nervously around the corner, your heart performing an unscheduled backup, you see—at first glance—nothing out of the ordinary.
+
+Just your faithful doormat, embossed with its usual friendly greeting:
+
+<div class="doormat-style"> Welcome But Please Migrate Your Shoes First </div>
+
+But then you notice it.
+
+Resting neatly in the middle, perfectly aligned as if digitally deposited, is an envelope. Its edges are crisp—too crisp. Almost… freshly rendered.
+
+It’s stamped with today’s date and, unmistakably, $player_name in firm archival ink.
+
+<div class="letter-style"> Extremely urgent! No, really — this isn’t one of those fake “priority metadata” notices. Seriously, open me. </div>
+
+The air hums faintly, like a hard drive spinning up in the dark. Somewhere, a faint giggle of corrupted data trails off into silence.
+
+<div class="start-menu"> <button class="button" data-passage="Read the letter">Read the letter</button> </div>
+
+
+:: Go to your room [Story] {"position":"575,675","size":"100,100"}
+Clippy shows you to your room, which is immaculate and unnervingly quiet. It feels less like a bedroom and more like a perfectly normalized ISO file.
+
+  <div class="start-menu">
+  <button class="button" data-passage="Sleep">Initiate Sleep Sequence (Count RAMs)</button>
+</div>
+
+
+:: HUSCarWilde [General] {"position":"1300,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/HUS-car%20Wilde.png" alt="HUScar Wilde">
+  </div>
+  <div class="char-text">
+    <h2>HUScar Wilde</h2>
+    <p><b>Occupation:</b> Hedge-cutter, or so they say</p>
+    <p><b>Favourite Location:</b> The Manor gardens, where the hedges whisper in patterns</p>
+    <p><b>Quote:</b> Rarely speaks - when he does, it sounds like static</p>
+    <p><b>Hobby:</b> Cutting hedges into ASCII art</p>
+    <p><b>Village Reputation:</b> Best not spoken of</p>
+    <p><b>Pet Peeve:</b> Overgrown shrubs</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Head to bed, the chamomile tea has really kicked in {"position":"575,275","size":"100,100"}
+You have a strange dream — or perhaps a corrupted premonition file — that someone, somewhere in the network, desperately needs your help. But the metadata is incomplete, and you can’t quite resolve the identifier…
+
+In the dream, there’s demonic laughter echoing across a brightly coloured village high street. The shop signs flicker like glitchy GIFs, and a peculiar figure is meticulously trimming hedges into the shape of QR codes — scanning for something… or someone.
+
+You jolt awake, checksum unverified. A single leaf lies on the floor beside your desk — impossible, since your home environment is strictly plant-free and climate-controlled.
+
+Do you…
+
+<div class="start-menu"> <button class="button" data-passage="Try and get back to sleep">Attempt a system restore (try and get back to sleep)</button> <button class="button" data-passage="Go and investigate">Run a manual recovery process (go and investigate)</button> </div>
+
+
+:: Introducing {"position":"225,25","size":"100,100"}
+<<script>>
+$("body").addClass("start-screen");
+<</script>>
+
+You, the famous digital preservationist detective, need a moniker. Please enter your name below to assume your new identity.
+
+    <<textbox "$player_name" "Your name" "Greetings">>
+  
+  <div class="start-menu">
+  <button class="button" data-passage="Start the game">Nice to meet you! </button>
+</div>
+
+
+:: JaySonJnr [General] {"position":"1300,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Jay%20Son%20Jnr.png" alt="Jay Son Jnr.">
+  </div>
+  <div class="char-text">
+    <h2>Jay Son Jnr.</h2>
+    <p><b>Occupation:</b> </p>
+    <p><b>Favourite Location:</b> Behind the bar, furiously rearranging bottles</p>
+    <p><b>Quote:</b> “You’ll need to nest that order properly.”</p>
+    <p><b>Hobby:</b> Rearranging drink menus into JSON trees</p>
+    <p><b>Village Reputation:</b> Charismatic but unstable</p>
+    <p><b>Pet Peeve:</b> Missing brackets</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Letter on desk {"position":"500,800","size":"100,100"}
+<div class="letter-style" style="font-family: Jokerman, sans-serif;">
+
+<center><i> (A font choice utterly uncharacteristic of Sir Regex)</i></center>
+<br>
+
+To whom it may concern,
+
+Always keep in mind that not everything <u>appears</u> as what it looks like. This whole place is a corrupted image.
+
+As a result I have definitely decided to take my own life, despite the fact that it probably really looks like murder! This is my last testimony and only source of truth.
+
+Yours sincerely,
+
+Sir Regex Metadata IV
+
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Explore The Study">Back to the Study</button>
+</div>
+
+
+:: LexyCon [General] {"position":"1400,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Lexi%20Con.png" alt="Dr. Lexy Con">
+  </div>
+  <div class="char-text">
+    <h2>Dr. Lexy Con</h2>
+    <p><b>Occupation:</b> Scholar in the Manor library</p>
+    <p><b>Favourite Location:</b> A shadowy library corner, where pages whisper</p>
+    <p><b>Quote:</b> “Shhh… Garamond is speaking."</p>
+    <p><b>Hobby:</b> Stitching letters into strange ligatures.</p>
+    <p><b>Village Reputation:</b> Eccentric and unsettling</p>
+    <p><b>Pet Peeve:</b> Not embedded fonts</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Look at the map (Day 1) [Story] {"position":"450,675","size":"100,100"}
+<h1>Metadata Manor - Day 1</h1>
+<p>The Manor is quiet. Which of the four core processing rooms will you investigate before turning in for the night?</p>
+<div style="position: relative; display: inline-block;">
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Manor%20map%20day%201%20and%202.png" alt="Map" width="800">
+
+    <!-- Invisible hotspot linking to library -->
+	<a data-passage="Explore the Library"
+	   style="position: absolute; 
+	          left: 15px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+        <!-- Invisible hotspot linking to Skull-ery -->
+	<a data-passage="Explore the Skull-ery"
+	   style="position: absolute; 
+	          left: 210px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+            <!-- Invisible hotspot linking to Graphics Room -->
+	<a data-passage="Explore the Graphics Room"
+	   style="position: absolute; 
+	          left: 405px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Study -->
+	<a data-passage="Explore The Study"
+	   style="position: absolute; 
+	          left: 600px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+</div>
+  <div class="start-menu">
+  <button class="button" data-passage="Go to your room">Call it a Day (Go to your room)</button>
+</div>
+
+
+:: MPEGgy [General] {"position":"1400,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/MPEG-gy.png" alt="MPEG-gy">
+  </div>
+  <div class="char-text">
+    <h2>MPEG-gy</h2>
+    <p><b>Occupation:</b> Runs the Plaintext Post Office</p>
+    <p><b>Favourite Location:</b> The Post Office counter, humming while she sorts</p>
+    <p><b>Quote:</b> “Oh, I heard about that…”</p>
+    <p><b>Hobby:</b> Singing gossip as if it were hymnals</p>
+    <p><b>Village Reputation:</b> Cheerful but cutting</p>
+    <p><b>Pet Peeve:</b> Letters without stamps</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Make way to the village [Story] {"position":"200,550","size":"100,100"}
+Night started falling and as you head to Sir Regex’s house Metadata Manor you see that the snow has started to set in and begin to drive faster. The roads to the country village and large mansion are windy and you don’t want to get snowed in.
+
+When you pass the gates, you glance upon a dark figure in the garden. Suddenly, you get an uneasy feeling and you start to wonder if you should have come here.
+
+You try to fight your nerves and park the car. 
+  <div class="start-menu">
+  <button class="button" data-passage="Enter the house">Enter the house</button>
+</div>
+
+
+:: MerryLoopwell [General] {"position":"1400,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Merry%20Loopwell.png" alt="Merry Loopwell">
+  </div>
+  <div class="char-text">
+    <h2>Merry Loopwell</h2>
+    <p><b>Occupation:</b> Owner of The Charming GIF Shop</p>
+    <p><b>Favourite Location:</b> The stock room</p>
+    <p><b>Quote:</b> “And again, and again, and again…”</p>
+    <p><b>Hobby:</b> Collecting perpetual-motion toys</p>
+    <p><b>Village Reputation:</b> Sweet, predictable, sometimes eerie</p>
+    <p><b>Pet Peeve:</b> Things that don’t loop smoothly</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Night in the Dark Hedges {"position":"400,1400","size":"100,100"}
+You brave the snowy gardens, the air thick with static. HUScar Wilde, the hedge-cutter, is at the manor gates, carving the final shape into the topiary: a perfectly rendered, 3D model of a compressed folder.
+
+He stops, his chainsaw hands lowered, and speaks in a voice like a modem handshake: "**\nE\nN\nT\nR\nO\nP\nY\n**... The system wants to forget. But it is rebuilt every day. You came because of the font. The font is the flaw. Go to the conclusion. Time to close the final bracket."
+
+He melts away into the static mist, leaving you with a final warning.
+
+<div class="start-menu">
+    <button class="button" data-passage="Day_3_Intro">Proceed to Day 3</button>
+</div>
+
+
+:: PUB Puzzle {"position":"900,1200","size":"100,100"}
+The tablet screen displays a security challenge with a blinking cursor. "Prove your literacy," it demands.
+
+<div class="json-quiz">
+
+  <!-- Question 1 -->
+  <div class="question">
+    <p>1. What is the mandatory syntax for a key in a JSON object?</p>
+    <<radiobutton "_q1" "wrong1" autocheck>> An unquoted string.<br>
+    <<radiobutton "_q1" "correct">> A string enclosed in double quotes (" ").<br>
+    <<radiobutton "_q1" "wrong2">> A string enclosed in single quotes (' ').<br>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question">
+    <p>2. Which of the following is NOT a valid value type in JSON?</p>
+    <<radiobutton "_q2" "wrong1">> null<br>
+    <<radiobutton "_q2" "wrong2">> An array []<br>
+    <<radiobutton "_q2" "correct">> undefined<br>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question">
+    <p>3. What is the rule regarding a trailing comma (a comma after the last key/value pair in an object)?</p>
+    <<radiobutton "_q3" "correct">> It is not allowed and will cause a syntax error.<br>
+    <<radiobutton "_q3" "wrong1">> It is ignored by the parser.<br>
+    <<radiobutton "_q3" "wrong2">> It indicates that the object is extensible.<br>
+  </div>
+
+</div>
+
+<div class="start-menu" style="margin-top: 1.5em;">
+  <<link "Submit Syntax Check">>
+    <<set _score to 0>>
+    <<if _q1 is "correct">><<set _score += 1>><</if>>
+    <<if _q2 is "correct">><<set _score += 1>><</if>>
+    <<if _q3 is "correct">><<set _score += 1>><</if>>
+
+    <<if _score is 3>>
+      <<set $clues.font_list = true>>
+      <<replace ".json-quiz">>
+        <div class="letter-style" style="text-align:center;">
+          <h2 style="color: #22c55e;">VALID SYNTAX: ACCESS GRANTED</h2>
+          <p>The tablet unlocks, opening a private message log. You find an entry marked "CONFIDENTIAL," sent from Colonel Win-ZIP to Jay Son Jnr.</p>
+          <hr>
+          <p>Attached is a heavily compressed file. When you extract it, you find a meticulously compiled list of Sir Regex's most hated—and most beloved—fonts. Jokerman and Comic Sans are at the top of the "Forbidden" list.</p>
+          <p>A note from the Colonel reads: <i>"Hold onto this. Useful for... future publications."</i></p>
+          <hr>
+          <p>This confirms the suicide note was a forgery and gives Colonel Win-ZIP a motive for blackmail or sabotage.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the PUB">Return to the bar</button>
+          </div>
+        </div>
+      <</replace>>
+    <<else>>
+      <<replace ".json-quiz">>
+        <div class="comic-sans-letter" style="text-align:center;">
+          <h2 style="color: #ef4444;">SYNTAX ERROR: ACCESS DENIED</h2>
+          <p>The tablet emits a harsh buzz. The screen flashes red before displaying a single, large, closing brace: <code>}</code></p>
+          <p><code>OBJECT CLOSED: Too many invalid requests. All temporary data has been flushed.</code></p>
+          <p>A cheerful chime sounds from the end of the bar.</p>
+          <p>"It looks like you're having trouble with proper structure," Clippy says, wiping down a perfectly clean glass. "Loose ends can be so untidy. I can help you tidy that up." He takes the tablet, which goes permanently dark in his hands.</p>
+          <p>The clue is gone, but Jay Son Jnr.'s smug grin tells you it must have been important.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the PUB">Return to the bar (Clue Lost)</button>
+          </div>
+        </div>
+      <</replace>>
+    <</if>>
+  <</link>>
+</div>```
+
+
+:: Post Office Puzzle {"position":"1250,1200","size":"100,100"}
+MPEG-gy leads you to the machine. A slot opens, presenting you with three distinct letters. "Just assign the correct font category to each one," she hums. "Easy peasy!"
+
+<div class="font-quiz">
+
+  <!-- Letter 1 -->
+  <div class="letter-sample">
+    <div class="letter-text" style="font-family: 'Times New Roman', Times, serif;">
+      To the council: I must formally object to the incessant noise from the annual village fair. The lack of proper structure and decorum is an affront to civilized society.
+    </div>
+    <select id="q1-select">
+      <option value="wrong">Sans-serif</option>
+      <option value="correct">Serif</option>
+      <option value="wrong">Script</option>
+    </select>
+  </div>
+
+  <!-- Letter 2 -->
+  <div class="letter-sample">
+    <div class="letter-text" style="font-family: Arial, Helvetica, sans-serif;">
+      NETWORK UPDATE: Please be advised that the village mainframe will be down for scheduled maintenance on Tuesday. All services will be unavailable.
+    </div>
+    <select id="q2-select">
+      <option value="correct">Sans-serif</option>
+      <option value="wrong">Serif</option>
+      <option value="wrong">Script</option>
+    </select>
+  </div>
+
+  <!-- Letter 3 -->
+  <div class="letter-sample">
+    <div class="letter-text" style="font-family: 'Brush Script MT', 'Comic Sans MS', cursive;">
+      Dearest Martha, Thank you ever so much for the lovely jam. It was simply divine! We must do tea again soon. Warmly, Beatrice.
+    </div>
+    <select id="q3-select">
+      <option value="wrong">Sans-serif</option>
+      <option value="wrong">Serif</option>
+      <option value="correct">Script</option>
+    </select>
+  </div>
+
+</div>
+
+<div class="start-menu" style="margin-top: 1.5em;">
+  <<link "Finalize Sort">>
+    <<set _q1_val to document.getElementById('q1-select').value>>
+    <<set _q2_val to document.getElementById('q2-select').value>>
+    <<set _q3_val to document.getElementById('q3-select').value>>
+    <<set _score to 0>>
+    <<if _q1_val is "correct">><<set _score += 1>><</if>>
+    <<if _q2_val is "correct">><<set _score += 1>><</if>>
+    <<if _q3_val is "correct">><<set _score += 1>><</if>>
+
+    <<if _score is 3>>
+      <<set $clues.love_letter = true>>
+      <<set $clues.birth_certificate = true>>
+      <<replace ".font-quiz">>
+        <div class="letter-style" style="text-align:center;">
+          <h2 style="color: #22c55e;">CALIBRATION SUCCESSFUL</h2>
+          <p>The machine whirs to life, sorting the letters into their correct bins. As the last one vanishes, two documents that were stuck in the mechanism slide out into the reject tray.</p>
+          <hr>
+          <p>The first is a passionate, undated **love letter** signed "M.P.G." to Sir Regex, speaking of a secret love and a child that binds them.</p>
+          <p>The second is a folded **birth certificate**. It lists Sir Regex Metadata IV as the father of one **Jay Son Jnr.**</p>
+          <hr>
+          <p>MPEG-gy's face pales for a microsecond before her smile returns. The implications are staggering: a secret affair, an illegitimate and disowned son. These are motives powerful enough to corrupt any file system.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the Post Office">Thank her for her time</button>
+          </div>
+        </div>
+      <</replace>>
+    <<else>>
+      <<replace ".font-quiz">>
+        <div class="comic-sans-letter" style="text-align:center;">
+          <h2 style="color: #ef4444;">CALIBRATION FAILED</h2>
+          <p>A horrible grinding noise fills the room as the machine ingests the letters. Smoke pours from a vent, smelling of burnt paper and ink.</p>
+          <p><code>ERROR: INVALID FONT MAPPING. PURGING QUEUE.</code></p>
+          <p>MPEG-gy gasps theatrically. "Oh, dear! It seems they've been... shredded. What a shame. Some mail is just undeliverable, I suppose." You catch a glimpse of the names "MPEG-gy" and "Jay Son" on a fragment before it's destroyed.</p>
+          <p>A cheerful chime comes from the doorway. "It looks like you're trying to sort incompatible file types!" Clippy says. "I can help you securely delete the corrupted fragments!"</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the Post Office">Step away from the machine (Clues Lost)</button>
+          </div>
+        </div>
+      <</replace>>
+    <</if>>
+  <</link>>
+</div>
+
+<style>
+.letter-sample {
+  border: 1px solid #444;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+}
+.letter-text {
+  background: #fdf6e3;
+  color: #333;
+  padding: 10px;
+  border-radius: 3px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.letter-sample select {
+  width: 100%;
+}
+</style>
+
+
+
+:: Profile {"position":"800,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png" alt="Detective (You)">
+  </div>
+  <div class="char-text">
+    <h2>Detective (You)</h2>
+    <p><b>Occupation:</b> Consultant in digital preservation & amateur sleuth</p>
+    <p><b>Favourite Location:</b> Metadata Manor’s dusty archives</p>
+    <p><b>Quote:</b> “This could be important evidence.”</p>
+    <p><b>Hobby:</b> Listening to true-crime podcasts at double speed</p>
+    <p><b>Village Reputation:</b> A bit mysterious, but welcomed - for now</p>
+    <p><b>Pet Peeve:</b> Sticky notes with no metadata</p>
+    <div class="start-menu">
+    <button class="button" data-passage="Get on with doing things">Get on with doing things</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Read the letter {"position":"200,300","size":"100,100"}
+<div class="letter-style">
+
+Dear $player_name,
+
+Before you read this, I may well be gone—checksum'd out of existence, perhaps. Troublesome things are afoot. My situation here in Checksum-on-the-Wold has… fragmented. Everything appears too lossless—the metadata matches too neatly, the streets are overly normalized, and even the parish database never throws an error. Something here has been over-curated, or worse, rebuilt from a malicious backup.
+
+I can no longer distinguish authenticity from duplication. Everyone here smiles with terrifying checksum precision, but no one blinks.
+
+If this message reaches you uncorrupted, I beg you to come at once. I'm afraid I've encountered a dangerous flaw in the family tree.
+
+The only soul I still trust is HUScar Wilde, the village wraith—half ghost, half sysadmin—who tends the hedges (and the network) with his chainsaw hands. He alone seems to remember what once was… before the great Reformatting.
+
+Come quickly, before I am migrated to an obsolete format.
+
+Yours, in hash and hope,
+Sir Regex Metadata IV
+
+</div> 
+<div class="start-menu"> <button class="button" data-passage="Fold up the letter">Fold up the letter</button> </div>
+
+
+:: Sip at your cup of soothing camomile tea {"position":"1250,750","size":"100,100"}
+
+
+
+:: SirRegex [General] {"position":"1500,0","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Sir%20Regex%20Metadata%20IV.png" alt="Sir Regex Metadata IV">
+  </div>
+  <div class="char-text">
+    <h2>Sir Regex Metadata IV</h2>
+    <p><b>Occupation:</b> Retired patriarch of Metadata Manor</p>
+    <p><b>Favourite Location:</b> His study at Metadata Manor, filled with dusty type specimens</p>
+    <p><b>Quote:</b> “That’s not valid syntax.”</p>
+    <p><b>Hobby:</b> Cataloguing every serif he ever met</p>
+    <p><b>Village Reputation:</b> Pedantic but respectable</p>
+    <p><b>Pet Peeve:</b> People who use Comic Sans unironically</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Sit back with a sigh at a job well done {"position":"1100,750","size":"100,100"}
+Sitting back with a sigh you hear the soft thud of a letter landing on the floor of your hallway. Your curiosity is peaked! Or is it...
+
+Do you,
+
+[[Sip at your cup of soothing camomile tea]]
+
+or
+
+[[Pad in
+
+
+:: Sleep [Story] {"position":"700,675","size":"100,100"}
+One TIFF drifts into a dark archive bed,
+Two WAVs curl up where the fixity’s fed.
+Three PDFs nestle in trusted repose,
+Four checksums hum where the cool server glows.
+
+Five floppy ghosts find their emulated keep,
+Six XML records lie quiet, asleep.
+Seven WARC files dream of the web they once knew,
+Eight backups rest sound, in redundant tiers too.
+
+Nine formats preserved, all their futures assured,
+Ten files kept safe - their long lives secured.
+
+Rest now, archivist, your watch is complete,
+The files will endure while you drift into sleep.
+
+  <div class="start-menu">
+  <button class="button" data-passage="Day 1 Complete">Start the day well-rested</button>
+</div>
+
+
+:: Sleep Fitfully {"position":"200,1000","size":"100,100"}
+!Day 2
+
+You wake with a start. The digital premonition is gone, but the feeling of corrupted data remains. The clock on the bedside table blinks `404`. It's time to head out and investigate the suspects in Checksum-on-the-Wold.
+
+<div class="start-menu">
+  <button class="button" data-passage="Day_2_Map">Head to the Village (Day 2)</button>
+</div>
+
+
+:: Start {"position":"100,25","size":"100,100"}
+<<script>>
+$("body").addClass("start-screen");
+<</script>>
+
+!Murdered in Plain Text
+!!!!<blockquote><em>The ASCII was clear, but the motive wasn't</em></blockquote>
+
+<div class="start-menu">
+  <button class="button" data-passage="Introducing">Start</button>
+  <button class="button" data-passage="Characters">Characters</button>
+</div>
+
+
+:: Start the game [Story] {"position":"350,25","size":"100,100"}
+Welcome, $player_name! Your reputation precedes you. The pages of 'The Daily E-Mail' and 'The Checksum Chronicle' are filled with your exploits: "The Riddle of the Ghost in the Cloud Storage," "The Mystery of the Misfiled Metadata," and, of course, your recent triumph in "The Case of the Bit Rot Bandit."
+
+Your skills are legendary. Now, they are needed.
+
+It’s been a long day of checksum chases. With a weary sigh, you sink into your chair, ready to relax with a lukewarm, bitstream-brewed chamomile tea — perfectly formatted for long-term preservation.
+
+Just as you begin to drift into a pleasant state of data refresh... **thump.**
+
+Was that a corrupted WAV file echoing through the hallway? Or something far less… backed up?
+
+<div class="start-menu">
+  <button class="button" data-passage="Go and investigate">Run a forensic analysis (a.k.a. go and investigate)</button>
+  <button class="button" data-passage="Head to bed, the chamomile tea has really kicked in">Initiate sleep mode — the chamomile tea checksum has verified</button>
+</div>
+
+
+:: TIFFani [General] {"position":"1500,100","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png" alt="TIFFani">
+  </div>
+  <div class="char-text">
+    <h2>TIFFani</h2>
+    <p><b>Occupation:</b> Tea room hostess at the Nibble and Byte</p>
+    <p><b>Favourite Location:</b> The tearoom’s back kitchen, where the layers never quite match</p>
+    <p><b>Quote:</b> "Tea always has layers, darling"</p>
+    <p><b>Hobby:</b> Stacking pastries higher than physics should allow</p>
+    <p><b>Village Reputation:</b> Sweet but slightly uncanny</p>
+    <p><b>Pet Peeve:</b> Misaligned saucers</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Talk to Clippy [Story] {"position":"325,675","size":"100,100"}
+"I've placed the Manor's structural metadata—the map—on the foyer table. Have a look. We'll begin proper forensic investigation tomorrow, but for tonight, you can conduct a preliminary deep-scan of the crime scene and adjacent rooms. We meet in the Skull-ery later to review your findings."
+  <div class="start-menu">
+  <button class="button" data-passage="Look at the map (Day 1)">Scan the Manor's Metadata</button>
+</div>
+
+
+:: Talk to Clippy 2 {"position":"1000,900","size":"100,100"}
+"How can I assist your investigation, Detective?" Clippy asks, bending into the shape of an interrogation lamp.
+
+<button class="accordion">Ask about Sir Regex</button>
+<div class="panel">
+  <p>"Sir Regex was a man of... standards. He believed in strict validation for everything, from file formats to family members. He was recently working on a major update to his... personal schemas. It seems he found an invalid entry."</p>
+</div>
+
+<button class="accordion">Ask about the other residents</button>
+<div class="panel">
+  <p>"A fascinating collection of data types, aren't they? It looks like you're trying to build a list of suspects. Some are more compressed than others. Some loop endlessly. And some... well, some aren't what they appear to be at all. Would you like me to format that as a bulleted list?"</p>
+</div>
+
+<button class="accordion">Ask about the murder weapon</button>
+<div class="panel">
+  <p>"The weapon? Ah, a classic query. It appears the cause of deletion was not a physical object, but a corruption of the primary directory. A fatal exception, if you will. I have a list of potential exploits, if you'd like to see them." He briefly flickers into the shape of a knife, a rope, and a poisoned teacup.</p>
+</div>
+
+
+<div class="start-menu" style="margin-top: 2em;">
+  <button class="button" data-passage="Look at the map (Day 1)">Scan the Manor's Metadata (Look at Map)</button>
+</div>
+
+
+:: Tea Room Puzzle {"position":"725,1200","size":"100,100"}
+You discreetly activate the scanner, pointing it at TIFF-any as she arranges a tower of pixel-perfect pastries. The device whirs quietly, and its small screen flickers to life, displaying a stream of hexadecimal data. It isolates her core file signature—her "magic bytes."
+
+<div class="magic-byte-quiz">
+  <div class="scanner-display">
+    <h3>SUBJECT SIGNATURE: TIFF-any</h3>
+    <pre><code>52 49 46 46 ?? ?? ?? ?? 57 45 42 50</code></pre>
+    <p><i>(NOTE: '??' indicates variable data, like file size.)</i></p>
+  </div>
+
+  <p>Your scanner cross-references her signature against a database of known formats. Based on the data, which format is she?</p>
+
+  <!-- The Puzzle Choices -->
+  <div class="question">
+    <p><strong>Compare her signature to the archival standards below:</strong></p>
+
+    <div class="format-standard">
+      <<radiobutton "_q1" "tiff" autocheck>>
+      <label for="radiobutton--q1-tiff">
+        <strong>TIFF (Tagged Image File Format):</strong><br>
+        Begins with <code>49 49 2A 00</code> (Little-endian) or <code>4D 4D 00 2A</code> (Big-endian).
+      </label>
+    </div>
+
+    <div class="format-standard">
+      <<radiobutton "_q1" "jpeg">>
+      <label for="radiobutton--q1-jpeg">
+        <strong>JPEG (Joint Photographic Experts Group):</strong><br>
+        Begins with <code>FF D8 FF</code>.
+      </label>
+    </div>
+
+    <div class="format-standard">
+      <<radiobutton "_q1" "webp">>
+      <label for="radiobutton--q1-webp">
+        <strong>WebP (Web Picture Format):</strong><br>
+        Begins with <code>52 49 46 46</code>, with <code>57 45 42 50</code> appearing a few bytes later.
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="start-menu" style="margin-top: 1.5em;">
+  <<link "Confirm Format Identification">>
+    <<if _q1 is "webp">>
+      <<set $clues.magic_bytes = true>>
+      <<replace ".magic-byte-quiz">>
+        <div class="letter-style" style="text-align:center;">
+          <h2 style="color: #22c55e;">ANALYSIS COMPLETE: FORMAT MISMATCH</h2>
+          <p>The scanner beeps affirmatively. The signature is a perfect match for <strong>WebP</strong>. This confirms your suspicion from the library—the PUID "x-fmt/453" was referring to her!</p>
+          <hr>
+          <p>She's not a lossless TIFF at all. She's a modern, lossy, and highly compressed imposter. Her entire identity is a lie, a carefully constructed façade. Sir Regex, with his obsession for standards, would have surely discovered this.</p>
+          <hr>
+          <p>You now have concrete proof of her deception. This is a powerful motive. Maybe she is not his neice after all!</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the Tea Room">Put the scanner away</button>
+          </div>
+        </div>
+      <</replace>>
+    <<else>>
+      <<replace ".magic-byte-quiz">>
+        <div class="comic-sans-letter" style="text-align:center;">
+          <h2 style="color: #ef4444;">ANALYSIS FAILED: SIGNATURE MISMATCH</h2>
+          <p>You select the wrong format. The scanner emits a loud, angry buzz. TIFF-any whips her head around, her smile gone. "What is that? Are you trying to... validate me?"</p>
+          <p>Before you can react, she snatches the device from your hand. "I don't appreciate unauthorized scans." With a sickening crunch, she crushes the scanner in her palm. It dissolves into a shower of corrupted pixels.</p>
+          <p>A cheerful chime comes from the doorway. "It looks like you've experienced a hardware failure!" Clippy says. "Allow me to sweep up this... e-waste."</p>
+          <p>The proof is gone, destroyed by the very person you were trying to expose.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the Tea Room">Back away slowly (Clue Lost)</button>
+          </div>
+        </div>
+      <</replace>>
+    <</if>>
+  <</link>>
+</div>
+
+<style>
+.format-standard {
+  border: 1px solid #444;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #2a2a2a;
+}
+.format-standard:hover {
+  background-color: #3a3a3a;
+}
+.format-standard label {
+  display: block;
+  cursor: pointer;
+}
+.format-standard code {
+  font-weight: bold;
+  color: #C89F65;
+}
+</style>
+
+
+
+:: Tell me more about how amazing I am! {"position":"500,25","size":"100,100"}
+Well, if you insist… there’s so much to reconstruct!
+
+You, of course, are the itinerant digital preservationist detective — roaming from repository to repository, restoring order from the chaos of corrupted collections and degraded data.
+
+Your legend is well-documented in such celebrated cases as “The Adventures of the Forgotten Password,” “The Riddle of the Ghost in the Cloud Storage,” “The Mystery of the Misfiled Metadata,” and “The Case of the Bit Rot Bandit.”
+
+Most recently, you found yourself knee-deep in a messy checksum scandal — involving a corrupted PDF, a phantom accession record, and a reel-to-reel tape that refused to stay reel. Some said the case was unsalvageable… but you’ve never been one to leave a byte behind.
+
+<div class="start-menu"> <button class="button" data-passage="Profile">Access your full profile</button> <button class="button" data-passage="Get on with doing things">Begin your next preservation adventure</button> </div>
+
+
+:: Tiff-any Conclusion {"position":"600,1700","size":"100,100"}
+"TIFF-ANY! The game is over. You are not Sir Regex's niece, and you are not a lossless TIFF! You're a low-resolution fraud—a WebP imposter!"
+
+TIFF-any's perfect pixelated face begins to tear, her features blurring into a mosaic of block artifacts. She screams, her voice glitching, "He was going to update his will! He would have invalidated me entirely! I'm not lossy... I'm not!"
+
+Your evidence was clear:
+1.  **The PUID:** The discarded paper with "x-fmt/453" from the library was a WebP identifier, not a TIFF.
+2.  **The Corrupted Font:** The Jokerman letter found at the scene was a deliberate mockery of Sir Regex's strict standards, a sign of personal animosity.
+3.  **The Torn Tag:** The ripped "lossless integrity" tag from the Graphics Room pointed to a *lossy* secret.
+4.  **The Weapon:** A malicious, memory-altering cookie from the Skull-ery, served with a "static" cup of tea, which corrupted Sir Regex's short-term memory just long enough to stop him from updating his will.
+
+Case closed. The truth, as always, is in the bytes.
+
+<div class="start-menu">
+    <button class="button" data-passage="End credits">End credits</button>
+</div>
+
+
+:: Try and get back to sleep {"position":"700,200","size":"100,100"}
+When you get back to sleep you sleep more deeply and silently than you have ever experienced before. No thoughts cross your mind. You wake up at midday to find the postman has been with bundles of fan mail for your work. After reading the first six letters you give up and drop the rest in the bin.
+<div style="position: relative; display: inline-block;">
+<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Fanmail.png" alt="Fanmail" width="800">
+
+    <!-- Invisible hotspot linking to Fan Mail Letter #1 -->
+	<a data-passage="Fan Mail Letter #1"
+	   style="position: absolute; 
+	          left: 10px;
+	          top: 50px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+
+    <!-- Invisible hotspot linking to Fan Mail Letter #2 -->
+	<a data-passage="Fan Mail Letter #2"
+	   style="position: absolute; 
+	          left: 290px;
+	          top: 50px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+    <!-- Invisible hotspot linking to Fan Mail Letter #3 -->
+	<a data-passage="Fan Mail Letter #3"
+	   style="position: absolute; 
+	          left: 570px;
+	          top: 50px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+        <!-- Invisible hotspot linking to Fan Mail Letter #4 -->
+	<a data-passage="Fan Mail Letter #4"
+	   style="position: absolute; 
+	          left: 10px;
+	          top: 250px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+            <!-- Invisible hotspot linking to Fan Mail Letter #5 -->
+	<a data-passage="Fan Mail Letter #5"
+	   style="position: absolute; 
+	          left: 290px;
+	          top: 250px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Fan Mail Letter #6 -->
+	<a data-passage="Fan Mail Letter #6"
+	   style="position: absolute; 
+	          left: 570px;
+	          top: 250px;
+	          width: 220px;
+	          height: 160px;
+	          display: block;">
+	</a>
+</div>
+
+
+:: Untitled Passage {"position":"875,1625","size":"100,100"}
+
+
+
+:: Untitled Passage 1 {"position":"1025,1675","size":"100,100"}
+
+
+
+:: VicarVector [General] {"position":"1500,200","size":"100,100"}
+<div class="character-page">
+  <div class="char-image">
+    <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/vicar.png" alt="Vicar Vector">
+  </div>
+  <div class="char-text">
+    <h2>Vicar Vector</h2>
+    <p><b>Occupation:</b> Preacher at St Mary of the Lossless</p>
+    <p><b>Favourite Location:</b> The pulpit, where words scale endlessly</p>
+    <p><b>Quote:</b> “The eternal line endures.”</p>
+    <p><b>Hobby:</b> Resizing hymn sheets until unreadable</p>
+    <p><b>Village Reputation:</b> Inspiring yet confusing</p>
+    <p><b>Pet Peeve:</b> Misaligned margins</p>
+        <div class="start-menu">
+    <button class="button" data-passage="Start">Go back to start</button>
+    <button class="button" data-passage="Characters">Go back to characters</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.character-page {
+  display: flex;
+  align-items: flex-start;
+  gap:16px;              /* spacing between image & text */
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.character-page .char-image img {
+  width: 220px;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Text column */
+.character-page .char-text {
+  flex: 1;
+  text-align: left;
+  line-height: 1.3;       /* tighter line spacing */
+}
+
+.character-page .char-text h2 {
+  margin: 0 0 2px 0;      /* only a small gap under heading */
+  font-size: 1.6em;
+  text-align: left;
+}
+
+.character-page .char-text p {
+  margin: 4px 0;          /* tiny gap between paragraphs */
+  text-align: left;
+}
+</style>
+
+
+:: Wrong Conclusion {"position":"700,1700","size":"100,100"}
+"I accuse... you. Unfortunately, that is incorrect."
+
+The police chief gives you a skeptical look. Your accusation is not valid syntax. The true killer, emboldened by your error, walks free. The village of Checksum-on-the-Wold returns to its unnervingly perfect, but ultimately corrupt, state. You are politely escorted from the manor with a corrupted reputation.
+
+<div class="start-menu">
+    <button class="button" data-passage="End credits">End credits</button>
+</div>
+
+
+:: XML family tree {"position":"500,900","size":"100,100"}
+code Twine
+downloadcontent_copy
+expand_less
+   You pull a yellowed, hand-drawn document from between some large tomes. It’s a fragment of the Metadata family lineage, meticulously mapped out—in XML format.
+
+<pre style="font-size: 0.8em; text-align: left; background: #EEE; color: #333; padding: 10px; border-radius: 5px;">
+&lt;family&gt;
+    &lt;father&gt;Sir Regex Metadata IV&lt;/father&gt;
+    &lt;son name="Jay Son Jnr." format="JSON"&gt;DISOWNED&lt;/son&gt;
+    &lt;niece name="TIFF-any" format="WebP"&gt;INVALID&lt;/niece&gt;
+&lt;/family&gt;
+</pre>
+
+This isn't just a family tree—it's a schema of disdain. It clearly shows Sir Regex's preference for XML, his *disowned* son who uses JSON, and his *invalid* niece. Both have potential motives.
+
+  <div class="start-menu">
+  <button class="button" data-passage="Explore The Study">Back to the Study</button>
+</div>
+
+
+:: interrogate Ewan {"position":"1400,1200","size":"100,100"}
+You pick up the device. The screen flickers to life, displaying a stark, text-based security prompt. "AUTHENTICATION REQUIRED," it reads. "Please answer the following to proceed."
+
+At the bottom of the screen, a single, underlined hyperlink glows faintly. It's labeled:
+<a href="https://www.dpconline.org/digipres/implement-digipres/dpc-ram" target="_blank" rel="noopener noreferrer">DPC RAM Documentation (External Link)</a>
+<i>(Hint: Open the link in a new tab to find the answers!)</i>
+
+<div class="dpc-ram-quiz">
+
+  <!-- Question 1 -->
+  <div class="question">
+    <p>1. What does the 'RAM' in the DPC's Rapid Assessment Model stand for?</p>
+    <<radiobutton "_q1" "wrong1" autocheck>> Random Access Memory<br>
+    <<radiobutton "_q1" "correct">> Rapid Assessment Model<br>
+    <<radiobutton "_q1" "wrong2">> Repository Audit Method<br>
+  </div>
+
+  <!-- Question 2 -->
+  <div class="question">
+    <p>2. The DPC RAM is structured into eleven sections. Which of the following is NOT one of them?</p>
+    <<radiobutton "_q2" "wrong1">> Policy and Strategy<br>
+    <<radiobutton "_q2" "correct">> Public User Engagement Statistics<br>
+    <<radiobutton "_q2" "wrong2">> Technical Expertise and Training<br>
+  </div>
+
+  <!-- Question 3 -->
+  <div class="question">
+    <p>3. What is the fundamental purpose of the DPC RAM?</p>
+    <<radiobutton "_q3" "wrong1">> To serve as a formal, internationally recognized certification for digital archives.<br>
+    <<radiobutton "_q3" "correct">> To help organizations identify and prioritize improvements in their digital preservation capability.<br>
+    <<radiobutton "_q3" "wrong2">> To calculate the exact financial cost of long-term data storage.<br>
+  </div>
+
+</div>
+
+<div class="start-menu" style="margin-top: 1.5em;">
+  <<link "Submit Answers">>
+    <<set _score to 0>>
+    <<if _q1 is "correct">><<set _score += 1>><</if>>
+    <<if _q2 is "correct">><<set _score += 1>><</if>>
+    <<if _q3 is "correct">><<set _score += 1>><</if>>
+
+    <<if _score is 3>>
+      <<set $clues.ewe_an_notice = true>>
+      <<replace ".dpc-ram-quiz">>
+        <div class="letter-style" style="text-align:center;">
+          <h2 style="color: #22c5e;">ACCESS GRANTED</h2>
+          <p>The device unlocks, displaying the full notice in a crisp, serif font.</p>
+          <hr>
+          <p><strong>File Format Acquisition Notice - Ewe-an Shepherd:</strong><br>Your persistent memory consumption has become an unacceptable drain on the estate's resources. Your grazing rights are hereby terminated.</p>
+          <p><i>Failure to comply will result in immediate data migration and pasture reallocation. This is your final checksum.</i></p>
+          <hr>
+          <p>The message is cold, brutal, and provides a powerful motive. Sir Regex wasn't just reclaiming land; he was threatening to ruin Ewe-an completely.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Explore the Village Common">Return to the Village Common</button>
+          </div>
+        </div>
+      <</replace>>
+    <<else>>
+      <<replace ".dpc-ram-quiz">>
+        <div class="comic-sans-letter" style="text-align:center;">
+          <h2 style="color: #ef4444;">ACCESS DENIED</h2>
+          <p>A series of error messages flash across the screen. The device's screen pixelates heavily before going dark with a faint fizzing sound.</p>
+          <p><code>FILE CORRUPTED: Too many failed attempts. Self-destruct sequence initiated.</code></p>
+          <p>A cheerful chime sounds from behind you.</p>
+          <p>"It looks like you're experiencing a permissions error!" Clippy says, appearing from behind a pixelated sheep. "Sometimes, it's best not to know. I can help you properly dispose of this... obsolete hardware."</p>
+          <p>Before you can object, he snatches the device and tucks it away. The full message is lost forever, but you know enough to be suspicious of Ewe-an.</p>
+          <div class="start-menu">
+            <button class="button" data-passage="Day_2_Map">Return to the map</button>
+          </div>
+        </div>
+      <</replace>>
+    <</if>>
+  <</link>>
+</div>
+
+
+
+:: interrogate Lexycon {"position":"1225,925","size":"100,100"}
+
+
+
+:: StoryScript [script]
+// Add class on passage start so CSS can target the Start screen
+$(document).on(':passagestart', function (ev) {
+  if (ev.passage.title === "Start") {
+    $('body').addClass('start-screen');
+  } else {
+    $('body').removeClass('start-screen');
+  }
+});
+
+// Suspect Bios
+$(document).on("click", ".suspect-button", function() {
+    // Hide all bios first
+    $(".suspect-bio").hide();
+    // Show the one linked to this button
+    const target = $(this).data("target");
+    $("#" + target).slideDown(300);
+});
+
+// Accordion
+$(document).on("click", ".accordion", function () {
+  $(this).toggleClass("active");
+  const panel = $(this).next(".panel");
+  panel.slideToggle();
+});
+
+
+
+$(document).on(':passagerender', function () {
+	if (State.variables.unlockButton) {
+		if (!$('#global-button').length) {
+			$('#ui-bar').append(
+				$('<button>')
+					.attr('id', 'global-button')
+					.text('See character sheets')
+					.css({ margin: '10px' })
+					.on('click', function () {
+						State.variables.returnTo = passage(); // Save current passage
+						Engine.play('SecretPassage');
+					})
+			);
+		}
+	} else {
+		$('#global-button').remove();
+	}
+});
+
+:: StoryStylesheet [stylesheet]
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Libre+Baskerville&display=swap');
+
+.start-menu {
+  display: flex;
+  justify-content: center; /* center the buttons horizontally */
+  gap: 0.5em; /* space between buttons */
+  flex-wrap: wrap; /* allow wrapping on small screens */
+  margin-top: 2em;
+}
+
+/* Base page styling */
+body {
+  background-color: #1C1B1A;
+  color: #EDEAE5;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 150%;
+  text-align: justify;
+}
+ 
+/* hide ui-bar and change margin, center text */
+#ui-bar {
+  display: none;
+}
+ 
+#story {
+  margin-left: 0;
+}
+ 
+#passages {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+ 
+.passage {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+ 
+/* Global headings */
+h1 {
+  font-family: 'Cinzel Decorative', serif;
+  color: #fffff0 ;
+  text-align: center;
+}
+ 
+/* Button styling */
+/* Button styling */
+.button {
+  padding: 0.8em 1.2em;
+  background-color: #1C1B1A;
+  color: #C89F65;
+  border: 2px solid #C89F65;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.button:hover {
+  background-color: #c69d63;
+  color: #EDEAE5;
+  border: 2px solid #C89F65;
+}
+
+.button:active {
+  background-color: #C89F65;
+  color: #1C1B1A;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* border */
+.silent-movie-frame {
+  position: relative;
+  background-color: #1C1B1A;
+  color: #fffff0;
+  padding: 30px;
+  border: 10px solid white;
+  max-width: 800px;
+  margin: 0 auto;
+}
+ 
+.corner {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+  pointer-events: none;
+}
+ 
+.corner.tl {
+  top: -10px;
+  left: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/TopLeft.png");
+}
+.corner.tr {
+  top: -10px;
+  right: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/TopRight.png");
+  transform: scaleX(-1);
+}
+.corner.bl {
+  bottom: -10px;
+  left: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/BottomLeft.png");
+  transform: scaleY(-1);
+}
+.corner.br {
+  bottom: -10px;
+  right: -10px;
+  background-image: url("https://github.com/Susanne404/Murdered-In-Plain-Text/blob/main/Images/Border/BottomRight.png");
+  transform: scale(-1, -1);
+}
+ 
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Suspect buttons container */
+.suspect-menu {
+  display: flex;
+  justify-content: center; /* center buttons */
+  gap: 0.5em;
+  flex-wrap: wrap; /* wrap on small screens */
+  margin-bottom: 1em;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #1C1B1A;
+  color: #C89F65;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s;
+  margin-bottom: 5px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #C89F65;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 12px;
+  background-color: #c69d63;
+  max-height: 0;
+  display: none;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  border-left: 2px solid #ccc;
+  border-right: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+
+.letter-style {
+
+background: linear-gradient(to bottom, #fdf6e3, #f5e9c8);
+  border: 1px solid #d8cfc4;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1), inset 0 0 5px rgba(0,0,0,0.05);
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 700px;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #3e3e3e;
+  border-radius: 4px;
+
+}
+
+.comic-sans-letter {
+  font-family: 'Comic Sans MS', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: black;
+  border-radius: 4px;
+  border: 2px solid #000;  
+  padding: 20px;          
+  margin: 20px auto;       
+  max-width: 600px;        
+  background-color: #fdf6e3;  
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);  
+  line-height: 1.6; 
+  text-align: left;
+}
+
+.doormat-style {
+  background: repeating-linear-gradient(
+    45deg,
+    #d2b48c,
+    #d2b48c 10px,
+    #c2a679 10px,
+    #c2a679 20px
+  );
+  border: 3px solid #8b6f47;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2), 0 0 8px rgba(0,0,0,0.1);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 700px;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #3e3e3e;
+  border-radius: 6px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Target SugarCube's passage container and other common TF containers */
+#story, #passages, .passage, tw-story, tw-passage {
+  text-align: justify !important;       /* force justify for the passage area */
+  text-justify: inter-word;             /* make justification use inter-word spacing */
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;                        /* allow hyphenation for better spacing */
+  text-align-last: left;                /* keep last line left-aligned (optional) */
+}
+
+/* Ensure each paragraph inside passages is justified */
+#passages p, .passage p, tw-passage p {
+  text-align: inherit !important;
+}
+
+.portrait-sidebar {
+  right: 20px;
+  left: auto;
+}
