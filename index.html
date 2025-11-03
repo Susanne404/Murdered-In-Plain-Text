@@ -379,6 +379,27 @@ $(document).on("click", ".accordion", function () {
   $(this).toggleClass("active");
   const panel = $(this).next(".panel");
   panel.slideToggle();
+});
+
+
+
+$(document).on(':passagerender', function () {
+	if (State.variables.unlockButton) {
+		if (!$('#global-button').length) {
+			$('#ui-bar').append(
+				$('<button>')
+					.attr('id', 'global-button')
+					.text('See character sheets')
+					.css({ margin: '10px' })
+					.on('click', function () {
+						State.variables.returnTo = passage(); // Save current passage
+						Engine.play('SecretPassage');
+					})
+			);
+		}
+	} else {
+		$('#global-button').remove();
+	}
 });</script><tw-tag name="General" color="blue"></tw-tag><tw-tag name="Story" color="yellow"></tw-tag><tw-tag name="Clue" color="purple"></tw-tag><tw-passagedata pid="1" name="Achievements" tags="General" position="1000,0" size="100,100">Achievements</tw-passagedata><tw-passagedata pid="2" name="Characters" tags="General" position="1000,200" size="100,100">&lt;div style=&quot;display:flex; flex-direction:column; align-items:center; gap:4px;&quot;&gt;
   &lt;h1&gt;Characters&lt;/h1&gt;
   &lt;h3&gt;Click on a portrait to learn more about this character&lt;/h3&gt;
@@ -390,7 +411,7 @@ $(document).on("click", ".accordion", function () {
       &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png&quot; alt=&quot;Colonel Win-ZIP&quot;&gt;
     &lt;/a&gt;
 
-    &lt;a data-passage=&quot;ClippordButler&quot; class=&quot;char suspect&quot; data-name=&quot;Clippord - The Butler&quot; title=&quot;Clippord - The Butler&quot;&gt;
+    &lt;a data-passage=&quot;ClippordButler&quot; class=&quot;char suspect&quot; data-name=&quot;Clippord - The Butler&quot; title=&quot;Clippy - The Butler&quot;&gt;
       &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png&quot; alt=&quot;Clippord - The Butler&quot;&gt;
     &lt;/a&gt;
 
@@ -514,7 +535,7 @@ $(document).on("click", ".accordion", function () {
     &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png&quot; alt=&quot;Clippord - The Butler&quot;&gt;
   &lt;/div&gt;
   &lt;div class=&quot;char-text&quot;&gt;
-    &lt;h2&gt;Clippord - The Butler&lt;/h2&gt;
+    &lt;h2&gt;Clippy - The Butler&lt;/h2&gt;
     &lt;p&gt;&lt;b&gt;Occupation:&lt;/b&gt; Butler of Metadata Manor&lt;/p&gt;
     &lt;p&gt;&lt;b&gt;Favourite Location:&lt;/b&gt; The grand hall, hovering politely in the corner&lt;/p&gt;
     &lt;p&gt;&lt;b&gt;Quote:&lt;/b&gt; &quot;Need help picking the perfect murder weapon? I am here to assist you&quot;&lt;/p&gt;
@@ -667,12 +688,20 @@ You settle back into the tedium of everyday life with a contendedly safe yawn.
   margin: 4px 0;          /* tiny gap between paragraphs */
   text-align: left;
 }
-&lt;/style&gt;</tw-passagedata><tw-passagedata pid="8" name="End credits" tags="" position="1700,100" size="100,100">&lt;p&gt;Thank you for playing!&lt;/p&gt;</tw-passagedata><tw-passagedata pid="9" name="Enter the house" tags="Story" position="200,675" size="100,100">Upon arriving at Metadata Manor, you are greeted by Clippy the Butler in the foyer. The butler looks less upset and more like a badly rendered question mark.
-
-&quot;Welcome, Detective $player_name! Sir Regex and I were anticipating your arrival, though not under these... tragically low-resolution circumstances. The authorities have already removed the body—a gross breach of forensic protocol, wouldn&#39;t you agree? But the snow has performed a perfect geographic isolation, ensuring you have three days of pure, uninterrupted sleuthing. I am here to assist you, should you need to rephrase an accusation or select a properly formatted blunt object.&quot;
-
-You realize this is your chance. The network is down, the roads are blocked, and a murder has occurred. It&#39;s time to find the corrupting element in the system of Checksum-on-the Wold.
+&lt;/style&gt;</tw-passagedata><tw-passagedata pid="8" name="End credits" tags="" position="1700,100" size="100,100">&lt;p&gt;Thank you for playing!&lt;/p&gt;
+  
   &lt;div class=&quot;start-menu&quot;&gt;
+  &lt;button class=&quot;button&quot; data-passage=&quot;Introducing&quot;&gt;Start&lt;/button&gt;
+  &lt;button class=&quot;button&quot; data-passage=&quot;Characters&quot;&gt;Characters&lt;/button&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="Enter the house" tags="Story" position="200,675" size="100,100">Upon arriving at Metadata Manor, you are greeted by Clippy the Butler in the foyer. The butler looks less upset and more like a badly rendered question mark.
+
+&quot;Greetings, Detective $player_name! It looks like you&#39;re trying to solve a murder. Would you like some help with that? Sir Regex and I were anticipating your arrival, though not under these... tragically low-resolution circumstances. The authorities have already removed the body—a gross breach of forensic protocol, wouldn&#39;t you agree? But the snow has performed a perfect geographic isolation, ensuring you have three days of pure, uninterrupted sleuthing.&quot;
+
+He contorts into the shape of a magnifying glass. &quot;I am here to assist. Should you need to rephrase an accusation or select a properly formatted blunt object, just ask.&quot;
+
+You realize this is your chance. The network is down, the roads are blocked, and a murder has occurred. It&#39;s time to find the corrupting element in the system of Checksum-on-the-Wold.
+
+&lt;div class=&quot;start-menu&quot;&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Talk to Clippy&quot;&gt;Talk to Clippy&lt;/button&gt;
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="10" name="EweAn" tags="General" position="1300,0" size="100,100">&lt;div class=&quot;character-page&quot;&gt;
@@ -761,24 +790,13 @@ Done exploring this room?
 	&lt;/a&gt;
 </tw-passagedata><tw-passagedata pid="12" name="Explore the Graphics Room" tags="Clue" position="775,900" size="100,100">You enter the Graphics Room—a relic of late 90s image processing. A high-resolution printout of a single, highly compressed jpeg is pinned to a corkboard, marked with red circles and arrows pointing to the block artifacts. You feel Colonel Win-ZIP would have a coronary looking at it.
 
-A police officer stands by the fireplace, fiddling with a camera. He hands you a small, discarded tag: &lt;span class=&quot;note-link&quot;&gt;“x-metadata/lossless-integrity”&lt;/span&gt;. He says it was tucked behind an image frame.
+Clippy has left a neat stack of folders in the centre of the room...
 
-&lt;div style=&quot;position: relative; display: inline-block;&quot;&gt;
-  &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Files.png&quot; alt=&quot;Case Files&quot; width=&quot;800&quot;&gt;
+As you look closer you see that they each have a name attached to them and seem to contain interesting information on all the people that have been in close contact with Sir Regex...
 
-&lt;!-- Invisible hotspot triggering Colonel info popup (REMOVED complex popup, changed to passage link) --&gt;
-  &lt;a data-passage=&quot;ColonelWinZIP&quot;
-     style=&quot;position: absolute;
-            left: 100px;
-            top: 140px;
-            width: 180px;
-            height: 130px;
-            display: block;
-            cursor: pointer;&quot;&gt;
-  &lt;/a&gt;
-&lt;/div&gt;
+From now you can check out all the suspects any time you please!
 
-&lt;p&gt;The **lossless integrity tag** has been torn off. Why? Perhaps someone with a *lossy* secret, like TIFF-any, who claims to be a lossless TIFF but is always suspiciously pixelated...&lt;/p&gt;
+&lt;&lt;set $unlockButton to true&gt;&gt;
 
 &lt;p&gt;Done running your diagnostic scan on this room?&lt;/p&gt;
 &lt;div class=&quot;start-menu&quot;&gt;
@@ -817,7 +835,21 @@ Done with your file format lookups?
     &lt;button class=&quot;button&quot; data-passage=&quot;Explore The Study&quot;&gt;Check the Study (Find Letters)&lt;/button&gt;
     &lt;button class=&quot;button&quot; data-passage=&quot;Look at the map (Day 1)&quot;&gt;Back to Manor Map&lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="14" name="Explore the Skull-ery" tags="" position="875,900" size="100,100"></tw-passagedata><tw-passagedata pid="15" name="Fan Mail Letter #1" tags="" position="1200,400" size="100,100">&lt;div class=&quot;letter-style&quot;&gt;
+</tw-passagedata><tw-passagedata pid="14" name="Explore the Skull-ery" tags="" position="875,900" size="100,100">You push open a creaking door into the manor’s kitchen, bizarrely labeled the &quot;Skull-ery.&quot; The air is thick with the smell of ozone and burnt sugar. It’s unnervingly clean, save for a single, ornate cookie jar sitting on the counter.
+
+You lift the lid. Inside, amongst a few perfectly preserved biscuits, is a small, half-eaten cookie shaped like a floppy disk. It emits a faint, almost imperceptible static hum. You notice a few crumbs on the floor near where Sir Regex&#39;s body was reportedly found.
+
+Clippy appears silently at your elbow. &quot;It looks like you&#39;ve found a snack! These are from the local tearoom, The Nibble &amp; Byte. TIFF-any&#39;s specialty. They say her baking can make you forget your troubles. And your short-term memory. And possibly your own name. Would you like to sample one?&quot;
+
+He winks, an animation you didn&#39;t think he was capable of.
+
+&lt;div class=&quot;start-menu&quot;&gt;
+  &lt;button class=&quot;button&quot; data-passage=&quot;Look at the map (Day 1)&quot;&gt;Back to Manor Map&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;start-menu&quot;&gt;
+  &lt;button class=&quot;button&quot; data-passage=&quot;Talk to Clippy 2&quot;&gt;Talk to Clippy more&lt;/button&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="Fan Mail Letter #1" tags="" position="1200,400" size="100,100">&lt;div class=&quot;letter-style&quot;&gt;
 Holmes of Hard Drives 🔍💾,
 
 I can’t believe you caught the Bit-Rot Bandit 😱🦹‍♂️! My floppy disks feel safe again 💿💚. Please sign my RAID array 🙌🖊️🖥️.
@@ -912,10 +944,7 @@ It’s stamped with today’s date and, unmistakably, $player_name in firm archi
 
 The air hums faintly, like a hard drive spinning up in the dark. Somewhere, a faint giggle of corrupted data trails off into silence.
 
-&lt;div class=&quot;start-menu&quot;&gt; &lt;button class=&quot;button&quot; data-passage=&quot;Read the letter&quot;&gt;Read the letter&lt;/button&gt; &lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="Day 1 Complete" tags="Story" position="825,675" size="100,100">code Twine
-downloadcontent_copy
-expand_less
-You retreat to your room and fall asleep immediately.
+&lt;div class=&quot;start-menu&quot;&gt; &lt;button class=&quot;button&quot; data-passage=&quot;Read the letter&quot;&gt;Read the letter&lt;/button&gt; &lt;/div&gt;</tw-passagedata><tw-passagedata pid="24" name="Day 1 Complete" tags="Story" position="825,675" size="100,100">You retreat to your room and fall asleep immediately.
 
 The next morning, you wake up feeling like your entire system has been rebooted—a lossless restore, at least. Day 1 of the investigation is complete, and now you must take your forensic analysis to the village of Checksum-on-the-Wold.
 
@@ -924,10 +953,7 @@ Your three days started yesterday. Time to head to the village!
 &lt;div class=&quot;start-menu&quot;&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Sleep Fitfully!&quot;&gt;Proceed to Day 2&lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="25" name="Go to your room" tags="Story" position="575,675" size="100,100">code Twine
-downloadcontent_copy
-expand_less
-   Clippy shows you to your room, which is immaculate and unnervingly quiet. It feels less like a bedroom and more like a perfectly normalized ISO file.
+</tw-passagedata><tw-passagedata pid="25" name="Go to your room" tags="Story" position="575,675" size="100,100">Clippy shows you to your room, which is immaculate and unnervingly quiet. It feels less like a bedroom and more like a perfectly normalized ISO file.
 
   &lt;div class=&quot;start-menu&quot;&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Sleep&quot;&gt;Initiate Sleep Sequence (Count RAMs)&lt;/button&gt;
@@ -1408,10 +1434,7 @@ Do you,
 
 or
 
-[[Pad in</tw-passagedata><tw-passagedata pid="41" name="Sleep" tags="Story" position="700,675" size="100,100">code Twine
-downloadcontent_copy
-expand_less
-   One TIFF drifts into a dark archive bed,
+[[Pad in</tw-passagedata><tw-passagedata pid="41" name="Sleep" tags="Story" position="700,675" size="100,100">One TIFF drifts into a dark archive bed,
 Two WAVs curl up where the fixity’s fed.
 Three PDFs nestle in trusted repose,
 Four checksums hum where the cool server glows.
@@ -1439,17 +1462,22 @@ $(&quot;body&quot;).addClass(&quot;start-screen&quot;);
 
 &lt;div class=&quot;start-menu&quot;&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Introducing&quot;&gt;Start&lt;/button&gt;
-  &lt;button class=&quot;button&quot; data-passage=&quot;Clues&quot;&gt;Clues&lt;/button&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Characters&quot;&gt;Characters&lt;/button&gt;
-  &lt;button class=&quot;button&quot; data-passage=&quot;Achievements&quot;&gt;Achievements&lt;/button&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="Start the game" tags="Story" position="350,25" size="100,100">Welcome $player_name!
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="43" name="Start the game" tags="Story" position="350,25" size="100,100">Welcome, $player_name! Your reputation precedes you. The pages of &#39;The Daily E-Mail&#39; and &#39;The Checksum Chronicle&#39; are filled with your exploits: &quot;The Riddle of the Ghost in the Cloud Storage,&quot; &quot;The Mystery of the Misfiled Metadata,&quot; and, of course, your recent triumph in &quot;The Case of the Bit Rot Bandit.&quot;
 
-We are so honoured that you, the famous sleuth has joined us today! 
+Your skills are legendary. Now, they are needed.
 
-We have heard all about you in such newspapers such as &#39;The Daily E-Mail&#39;, &#39;The Checksum Chronicle&#39; and the &#39;Persistent Identifier Press&#39;.
-  &lt;div class=&quot;start-menu&quot;&gt;
-  &lt;button class=&quot;button&quot; data-passage=&quot;Tell me more about how amazing I am!&quot;&gt;Tell me more about how amazing I am! &lt;/button&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="44" name="TIFFani" tags="General" position="1500,100" size="100,100">&lt;div class=&quot;character-page&quot;&gt;
+It’s been a long day of checksum chases. With a weary sigh, you sink into your chair, ready to relax with a lukewarm, bitstream-brewed chamomile tea — perfectly formatted for long-term preservation.
+
+Just as you begin to drift into a pleasant state of data refresh... **thump.**
+
+Was that a corrupted WAV file echoing through the hallway? Or something far less… backed up?
+
+&lt;div class=&quot;start-menu&quot;&gt;
+  &lt;button class=&quot;button&quot; data-passage=&quot;Go and investigate&quot;&gt;Run a forensic analysis (a.k.a. go and investigate)&lt;/button&gt;
+  &lt;button class=&quot;button&quot; data-passage=&quot;Head to bed, the chamomile tea has really kicked in&quot;&gt;Initiate sleep mode — the chamomile tea checksum has verified&lt;/button&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="44" name="TIFFani" tags="General" position="1500,100" size="100,100">&lt;div class=&quot;character-page&quot;&gt;
   &lt;div class=&quot;char-image&quot;&gt;
     &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png&quot; alt=&quot;TIFFani&quot;&gt;
   &lt;/div&gt;
@@ -1651,11 +1679,7 @@ You wake with a start. The digital premonition is gone, but the feeling of corru
 &lt;div class=&quot;start-menu&quot;&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Day_2_Map&quot;&gt;Head to the Village (Day 2)&lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="51" name="Day_2_Map" tags="" position="400,1075" size="100,100">   :: Day_2_Map {&quot;position&quot;:&quot;400,1075&quot;,&quot;size&quot;:&quot;100,100&quot;}
-code Twine
-downloadcontent_copy
-expand_less
-   &lt;style&gt;
+</tw-passagedata><tw-passagedata pid="51" name="Day_2_Map" tags="" position="400,1075" size="100,100">&lt;style&gt;
 /* Optional CSS to make the table responsive and style buttons */
   .map-table {
     width: 100%;
@@ -1871,8 +1895,8 @@ He melts away into the static mist, leaving you with a final warning.
 &lt;div style=&quot;position: relative; display: inline-block;&quot;&gt;
 &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Manor%20map%20day%203.png&quot; alt=&quot;Map&quot; width=&quot;800&quot;&gt;
 
-    &lt;!-- Invisible hotspot linking to Library (Dr Lexy Con) --&gt;
-	&lt;a data-passage=&quot;Explore the Library&quot;
+    &lt;!-- Invisible hotspot linking to Pixelated Passages --&gt;
+	&lt;a data-passage=&quot;Explore the Pixelated Passages&quot;
 	   style=&quot;position: absolute; 
 	          left: 15px;
 	          top: 110px;
@@ -1904,19 +1928,22 @@ He melts away into the static mist, leaving you with a final warning.
 &lt;div class=&quot;start-menu&quot;&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Conclude Investigation&quot;&gt;Conclude Investigation (Make an Accusation)&lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="62" name="Accuse Tiff-any" tags="" position="600,1700" size="100,100">&quot;TIFF-ANY! The game is over. You are not Sir Regex&#39;s niece, and you are not a lossless TIFF! You&#39;re a low-resolution fraud—a WebP imposter!&quot;
+</tw-passagedata><tw-passagedata pid="62" name="Tiff-any Conclusion" tags="" position="600,1700" size="100,100">   &quot;TIFF-ANY! The game is over. You are not Sir Regex&#39;s niece, and you are not a lossless TIFF! You&#39;re a low-resolution fraud—a WebP imposter!&quot;
 
-TIFF-any&#39;s perfect pixelated face begins to tear, her features blurring into a mosaic of block artifacts. She screams: &quot;He was going to update his will! He would have invalidated me entirely!&quot;
+TIFF-any&#39;s perfect pixelated face begins to tear, her features blurring into a mosaic of block artifacts. She screams, her voice glitching, &quot;He was going to update his will! He would have invalidated me entirely! I&#39;m not lossy... I&#39;m not!&quot;
 
-Your evidence: the discarded PUID (x-fmt/453: WebP), the corrupted *Comic Sans* font that mocked Sir Regex&#39;s strict standards, and the ripped &quot;lossless integrity&quot; tag from the Graphics Room, which led you to suspect a lossy fraud. The weapon? A malicious memory-altering cookie, served with a &quot;static&quot; cup of tea, which corrupted Sir Regex&#39;s short-term memory just long enough to stop him from updating his will.
+Your evidence was clear:
+1.  **The PUID:** The discarded paper with &quot;x-fmt/453&quot; from the library was a WebP identifier, not a TIFF.
+2.  **The Corrupted Font:** The Jokerman letter found at the scene was a deliberate mockery of Sir Regex&#39;s strict standards, a sign of personal animosity.
+3.  **The Torn Tag:** The ripped &quot;lossless integrity&quot; tag from the Graphics Room pointed to a *lossy* secret.
+4.  **The Weapon:** A malicious, memory-altering cookie from the Skull-ery, served with a &quot;static&quot; cup of tea, which corrupted Sir Regex&#39;s short-term memory just long enough to stop him from updating his will.
 
-Case closed. The truth is in the bytes.
+Case closed. The truth, as always, is in the bytes.
+
 &lt;div class=&quot;start-menu&quot;&gt;
     &lt;button class=&quot;button&quot; data-passage=&quot;End credits&quot;&gt;End credits&lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="63" name="Conclude Investigation" tags="" position="400,1700" size="100,100">```twee
-:: Conclude Investigation {&quot;position&quot;:&quot;400,1700&quot;,&quot;size&quot;:&quot;100,100&quot;}
-The Chief Inspector stands before you, his uniform perfectly starched, like a newly rendered texture file.
+</tw-passagedata><tw-passagedata pid="63" name="Conclude Investigation" tags="" position="400,1700" size="100,100">The Chief Inspector stands before you, his uniform perfectly starched, like a newly rendered texture file.
 
 &quot;Detective $player_name,&quot; he says, consulting a small, unreadable digital notepad. &quot;You have three days of forensic metadata. The snow is clearing, and the other authorities are nearly here. Who is the murderer? And what was the weapon?&quot;
 
@@ -1929,6 +1956,7 @@ The Chief Inspector stands before you, his uniform perfectly starched, like a ne
   &lt;button class=&quot;button&quot; data-passage=&quot;Wrong Conclusion&quot;&gt;Accuse Ewe-an (The Shepherd)&lt;/button&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Wrong Conclusion&quot;&gt;Accuse Vicar Vector (The Event Planner)&lt;/button&gt;
   &lt;button class=&quot;button&quot; data-passage=&quot;Wrong Conclusion&quot;&gt;Accuse Merry Loopwell (The Looper)&lt;/button&gt;
+ &lt;button class=&quot;button&quot; data-passage=&quot;Wrong Conclusion&quot;&gt;Accuse Clippy (The Nearly Uninstalled)&lt;/button&gt;
 &lt;/div&gt;
 </tw-passagedata><tw-passagedata pid="64" name="Wrong Conclusion" tags="" position="700,1700" size="100,100">&quot;I accuse... you. Unfortunately, that is incorrect.&quot;
 
@@ -1947,7 +1975,7 @@ You find **Dr. Lexy Con&#39;s Library Lending Book**, hidden under a pile of mag
     &lt;button class=&quot;button&quot; data-passage=&quot;LexyCon&quot;&gt;Interrogate Dr. Lexy Con&lt;/button&gt;
     &lt;button class=&quot;button&quot; data-passage=&quot;Day_3_Map&quot;&gt;Back to Manor Map&lt;/button&gt;
 &lt;/div&gt;
-</tw-passagedata><tw-passagedata pid="66" name="Explore the Server Room" tags="" position="800,1600" size="100,100">The Server Room is loud, buzzing with cold air and the whir of hard drives. Colonel Win-ZIP is here, staring intensely at a blinking light, his entire body shuddering with forced compression.
+</tw-passagedata><tw-passagedata pid="66" name="Explore the Server Room" tags="" position="900,1500" size="100,100">The Server Room is loud, buzzing with cold air and the whir of hard drives. Colonel Win-ZIP is here, staring intensely at a blinking light, his entire body shuddering with forced compression.
 
 &quot;I am merely monitoring the network efficiency, Detective. Don&#39;t worry about this area. Nothing to see. Move along! Tighten it up!&quot;
 
@@ -1956,6 +1984,161 @@ Despite his protestations, you notice a USB stick labeled &quot;TOP SECRET - 100
 &lt;div class=&quot;start-menu&quot;&gt;
     &lt;button class=&quot;button&quot; data-passage=&quot;ColonelWinZIP&quot;&gt;Interrogate Colonel Win-ZIP&lt;/button&gt;
     &lt;button class=&quot;button&quot; data-passage=&quot;Day_3_Map&quot;&gt;Back to Manor Map&lt;/button&gt;
+&lt;/div&gt;
+</tw-passagedata><tw-passagedata pid="67" name="Explore the Pixelated Passages" tags="" position="1000,1500" size="100,100"></tw-passagedata><tw-passagedata pid="68" name="Character Sheets" tags="" position="1175,1050" size="100,100">&lt;div style=&quot;display:flex; flex-direction:column; align-items:center; gap:4px;&quot;&gt;
+  &lt;h1&gt;Characters&lt;/h1&gt;
+  &lt;h3&gt;Click on a portrait to learn more about this character&lt;/h3&gt;
+
+  &lt;!-- Grid of portraits --&gt;
+  &lt;div style=&quot;display:grid; grid-template-columns:repeat(6, 1fr); gap:6px; width:100%; max-width:1200px; overflow:visible;&quot;&gt;
+    
+    &lt;a data-passage=&quot;ColonelWinZIP&quot; class=&quot;char suspect&quot; data-name=&quot;Colonel Win-ZIP&quot; title=&quot;Colonel Win-ZIP&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Cmd%20Win%20Zip.png&quot; alt=&quot;Colonel Win-ZIP&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;ClippordButler&quot; class=&quot;char suspect&quot; data-name=&quot;Clippord - The Butler&quot; title=&quot;Clippy - The Butler&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Clippy%20the%20Butler.png&quot; alt=&quot;Clippord - The Butler&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;Detective&quot; class=&quot;char detective&quot; data-name=&quot;Detective (You)&quot; title=&quot;Detective (You)&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Detective.png&quot; alt=&quot;Detective (You)&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;EweAn&quot; class=&quot;char suspect&quot; data-name=&quot;Ewe-an&quot; title=&quot;Ewe-an&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Ewe-an.png&quot; alt=&quot;Ewe-an&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;HUSCarWilde&quot; class=&quot;char normal&quot; data-name=&quot;HUScar Wilde&quot; title=&quot;HUScar Wilde&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/HUS-car%20Wilde.png&quot; alt=&quot;HUScar Wilde&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;JaySonJnr&quot; class=&quot;char suspect&quot; data-name=&quot;Jay Son Jnr.&quot; title=&quot;Jay Son Jnr.&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Jay%20Son%20Jnr.png&quot; alt=&quot;Jay Son Jnr.&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;LexyCon&quot; class=&quot;char suspect&quot; data-name=&quot;Dr. Lexy Con&quot; title=&quot;Dr. Lexy Con&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Lexi%20Con.png&quot; alt=&quot;Dr. Lexy Con&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;MerryLoopwell&quot; class=&quot;char suspect&quot; data-name=&quot;Merry Loopwell&quot; title=&quot;Merry Loopwell&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Merry%20Loopwell.png&quot; alt=&quot;Merry Loopwell&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;MPEGgy&quot; class=&quot;char suspect&quot; data-name=&quot;MPEG-gy&quot; title=&quot;MPEG-gy&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/MPEG-gy.png&quot; alt=&quot;MPEG-gy&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;SirRegex&quot; class=&quot;char victim&quot; data-name=&quot;Sir Regex Metadata IV&quot; title=&quot;Sir Regex Metadata IV&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/Sir%20Regex%20Metadata%20IV.png&quot; alt=&quot;Sir Regex Metadata IV&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;TIFFani&quot; class=&quot;char suspect&quot; data-name=&quot;TIFFani&quot; title=&quot;TIFFani&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/TIFFani.png&quot; alt=&quot;TIFFani&quot;&gt;
+    &lt;/a&gt;
+
+    &lt;a data-passage=&quot;VicarVector&quot; class=&quot;char suspect&quot; data-name=&quot;Vicar Vector&quot; title=&quot;Vicar Vector&quot;&gt;
+      &lt;img src=&quot;https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Portraits/vicar.png&quot; alt=&quot;Vicar Vector&quot;&gt;
+    &lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+/* Card/link wrapper */
+.char {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Portrait */
+.char img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 4px solid transparent; /* base thickness */
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Roles (border colors) */
+.char.detective img { border-color: #ffffff; }
+.char.victim    img { border-color: #3b82f6; } /* blue */
+.char.normal    img { border-color: #22c55e; } /* green */
+.char.suspect   img { border-color: #ef4444; } /* red */
+
+/* Hover: slight zoom + color glow */
+.char:hover img {
+  transform: scale(1.04);
+}
+
+/* Per-role glow (soft, matching border) */
+.char.detective:hover img { 
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.7),
+    0 0 12px rgba(255,255,255,0.7),
+    0 0 20px rgba(255,255,255,0.5);
+}
+.char.victim:hover img {
+  box-shadow:
+    0 0 0 2px rgba(59,130,246,0.6),
+    0 0 12px rgba(59,130,246,0.6),
+    0 0 20px rgba(59,130,246,0.45);
+}
+.char.normal:hover img {
+  box-shadow:
+    0 0 0 2px rgba(34,197,94,0.6),
+    0 0 12px rgba(34,197,94,0.6),
+    0 0 20px rgba(34,197,94,0.45);
+}
+.char.suspect:hover img {
+  box-shadow:
+    0 0 0 2px rgba(239,68,68,0.6),
+    0 0 12px rgba(239,68,68,0.6),
+    0 0 20px rgba(239,68,68,0.45);
+}
+
+/* Tooltip */
+.char::after {
+  content: attr(data-name);
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.78);
+  color: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s ease;
+  white-space: nowrap;
+}
+.char:hover::after { opacity: 1; }
+&lt;/style&gt;
+&lt;&lt;if $returnTo&gt;&gt;
+	&lt;&lt;link &quot;Go Back&quot;&gt;&gt;
+		&lt;&lt;goto $returnTo&gt;&gt;
+	&lt;&lt;/link&gt;&gt;
+&lt;&lt;/if&gt;&gt;</tw-passagedata><tw-passagedata pid="69" name="Untitled Passage" tags="" position="700,1375" size="100,100"></tw-passagedata><tw-passagedata pid="70" name="Untitled Passage 1" tags="" position="575,1375" size="100,100"></tw-passagedata><tw-passagedata pid="71" name="Untitled Passage 2" tags="" position="825,1350" size="100,100"></tw-passagedata><tw-passagedata pid="72" name="Talk to Clippy 2" tags="" position="1000,1025" size="100,100"> &quot;How can I assist your investigation, Detective?&quot; Clippy asks, bending into the shape of an interrogation lamp.
+
+&lt;button class=&quot;accordion&quot;&gt;Ask about Sir Regex&lt;/button&gt;
+&lt;div class=&quot;panel&quot;&gt;
+  &lt;p&gt;&quot;Sir Regex was a man of... standards. He believed in strict validation for everything, from file formats to family members. He was recently working on a major update to his... personal schemas. It seems he found an invalid entry.&quot;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;button class=&quot;accordion&quot;&gt;Ask about the other guests&lt;/button&gt;
+&lt;div class=&quot;panel&quot;&gt;
+  &lt;p&gt;&quot;A fascinating collection of data types, aren&#39;t they? It looks like you&#39;re trying to build a list of suspects. Some are more compressed than others. Some loop endlessly. And some... well, some aren&#39;t what they appear to be at all. Would you like me to format that as a bulleted list?&quot;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;button class=&quot;accordion&quot;&gt;Ask about the murder weapon&lt;/button&gt;
+&lt;div class=&quot;panel&quot;&gt;
+  &lt;p&gt;&quot;The weapon? Ah, a classic query. It appears the cause of deletion was not a physical object, but a corruption of the primary directory. A fatal exception, if you will. I have a list of potential exploits, if you&#39;d like to see them.&quot; He briefly flickers into the shape of a knife, a rope, and a poisoned teacup.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;start-menu&quot; style=&quot;margin-top: 2em;&quot;&gt;
+  &lt;button class=&quot;button&quot; data-passage=&quot;Look at the map (Day 1)&quot;&gt;Scan the Manor&#39;s Metadata (Look at Map)&lt;/button&gt;
 &lt;/div&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
