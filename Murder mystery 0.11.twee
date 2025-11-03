@@ -516,68 +516,77 @@ Unbeknownst to you, you start to sleep walk out of the house and through the win
 <h1>Checksum-on-the-Wold Village Map - Day 2</h1>
 <p>Where will you start your interrogation of the suspects? When you are done investigating the village, return to the manor to rest.</p>
 
-<div style="position: relative; display: inline-block;">
-<img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Village%20map.png" alt="Map" width="800">
 
-    <a data-passage="Explore the Tea Room"
-	   style="position: absolute; 
-	          left: 15px;
-	          top: 110px;
-	          width: 240px;
-	          height: 95px;
-	          display: block;">
-	</a>
-    
-    <a data-passage="Explore the PUB"
-	   style="position: absolute; 
-	          left: 270px;
-	          top: 110px;
-	          width: 260px;
-	          height: 95px;
-	          display: block;">
-	</a>
-    
-    <a data-passage="Explore the Church"
-	   style="position: absolute; 
-	          left: 525px;
-	          top: 110px;
-	          width: 250px;
-	          height: 95px;
-	          display: block;">
-	</a>
+<table class="map-table">
+  <tr>
+    <td class="map-cell">
+      <div class="ascii-box">
++------------------+
+| THE NIBBLE & BYTE|
+|  TIFF'S TEA ROOM |
++------------------+
+      </div>
+      <<button "Enter Nibble & Byte" "Explore the Tea Room">></button>
+    </td>
 
 
+    <td class="map-cell">
+      <div class="ascii-box">
++------------------+
+|      THE .PUB    |
+|   JAY SON JNR.   |
++------------------+
+      </div>
+      <<button "Enter The .pub" "Explore the PUB">></button>
+    </td>
 
 
-    <a data-passage="Explore the Village Common"
-	   style="position: absolute; 
-	          left: 15px;
-	          top: 230px;
-	          width: 240px;
-	          height: 95px;
-	          display: block;">
-	</a>
-    
-    
-    <a data-passage="Explore the Post Office"
-	   style="position: absolute; 
-	          left: 270px;
-	          top: 230px;
-	          width: 260px;
-	          height: 95px;
-	          display: block;">
-	</a>
-    
-    <a data-passage="Explore the GIF Shop"
-	   style="position: absolute; 
-	          left: 525px;
-	          top: 230px;
-	          width: 250px;
-	          height: 95px;
-	          display: block;">
-	</a>
-    
-</div>
+    <td class="map-cell">
+      <div class="ascii-box">
++------------------+
+| ST. MARY OF THE  |
+|    LOSSLESS      |
++------------------+
+      </div>
+      <<button "Enter St Mary" "Explore the Church">></button>
+    </td>
+  </tr>
+
+
+  <tr>
+    <td class="map-cell">
+      <div class="ascii-box">
++------------------+
+|  THE VILLAGE     |
+| COMMON (EWE-AN)  |
++------------------+
+      </div>
+      <<button "Enter Village Common" "Explore the Village Common">></button>
+    </td>
+
+
+    <td class="map-cell">
+      <div class="ascii-box">
++------------------+
+|   THE POST       |
+| OFFICE (MPEG-GY) |
++------------------+
+      </div>
+      <<button "Enter Post Office" "Explore the Post Office">></button>
+    </td>
+
+
+    <td class="map-cell">
+      <div class="ascii-box">
++------------------+
+| LOOPWELL'S GIF   |
+|   MERRY LOOPWELL |
++------------------+
+      </div>
+      <<button "Enter GIF Shop" "Explore the GIF Shop">></button>
+    </td>
+  </tr>
+</table>
 <div class="start-menu">
   <button class="button" data-passage="Day 2 Complete">Return to Metadata Manor (End Day 2)</button>
 </div>```
@@ -599,9 +608,8 @@ Unbeknownst to you, you start to sleep walk out of the house and through the win
 
 <div style="position: relative; display: inline-block;">
 <img src="https://raw.githubusercontent.com/Susanne404/Murdered-In-Plain-Text/main/Images/Manor%20map%20day%203.png" alt="Map" width="800">
-
-    <!-- Invisible hotspot linking to Pixelated Passages -->
-	<a data-passage="Explore the Pixelated Passages"
+	    <!-- Invisible hotspot linking to library -->
+	<a data-passage="Explore the Library"
 	   style="position: absolute; 
 	          left: 15px;
 	          top: 110px;
@@ -610,8 +618,8 @@ Unbeknownst to you, you start to sleep walk out of the house and through the win
 	          display: block;">
 	</a>
     
-        <!-- Invisible hotspot linking to Dark Archive (NEW CONTENT) -->
-	<a data-passage="Explore the Dark Archive"
+        <!-- Invisible hotspot linking to Skull-ery -->
+	<a data-passage="Explore the Skull-ery"
 	   style="position: absolute; 
 	          left: 210px;
 	          top: 110px;
@@ -620,12 +628,52 @@ Unbeknownst to you, you start to sleep walk out of the house and through the win
 	          display: block;">
 	</a>
     
-            <!-- Invisible hotspot linking to Server Room (NEW CONTENT) -->
-	<a data-passage="Explore the Server Room"
+            <!-- Invisible hotspot linking to Graphics Room -->
+	<a data-passage="Explore the Graphics Room"
 	   style="position: absolute; 
 	          left: 405px;
 	          top: 110px;
 	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Study -->
+	<a data-passage="Explore The Study"
+	   style="position: absolute; 
+	          left: 600px;
+	          top: 110px;
+	          width: 180px;
+	          height: 95px;
+	          display: block;">
+	</a>
+
+<!-- Invisible hotspot linking to Server Room -->
+	<a data-passage="Explore the Server Room"
+	   style="position: absolute; 
+	          left: 15px;
+	          top: 230px;
+	          width: 230px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+            <!-- Invisible hotspot linking to Passages -->
+	<a data-passage="Explore the Pixelated Passages"
+	   style="position: absolute; 
+	          left: 290px;
+	          top: 230px;
+	          width: 230px;
+	          height: 95px;
+	          display: block;">
+	</a>
+    
+                <!-- Invisible hotspot linking to Dark Archive -->
+	<a data-passage="Explore the Dark Archive"
+	   style="position: absolute; 
+	          left: 535px;
+	          top: 231px;
+	          width: 240px;
 	          height: 95px;
 	          display: block;">
 	</a>
